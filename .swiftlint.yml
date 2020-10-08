@@ -1,0 +1,24 @@
+disabled_rules: # rule identifiers to exclude from running
+  - trailing_whitespace
+  - force_try
+  - cyclomatic_complexity
+line_length: 500
+file_length: 1000
+excluded: # paths to ignore during linting. Takes precedence over `included`.
+  - Carthage
+  - Pods
+  - explicit_type_interface
+  - questrewardsTests
+
+identifier_name:
+  min_length: 2
+
+cyclomatic_complexity:
+  warning: 25
+
+function_parameter_count:
+  warning: 10
+
+function_body_length:
+  warning: 100
+

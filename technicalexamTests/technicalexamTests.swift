@@ -7,6 +7,7 @@
 //
 
 import XCTest
+
 @testable import technicalexam
 
 class technicalexamTests: XCTestCase {
