@@ -38,6 +38,7 @@ final class DefaultFetchDeliveryUseCase: FetchDeliveryUseCase {
                     let deliveryPage = DeliveryPage(deliveries: deliveries,
                                                     page: requestValue.page)
                     self.deliveryRepository.save(entity: deliveryPage)
+                    print("prick saving")
                 } onError: { error in
                     observer.onError(error)
                 }

@@ -19,7 +19,7 @@ protocol DeliveryListingViewModelInputs {
 
 protocol DeliveryListingViewModelOutputs {
     var error: Driver<String>! { get }
-    var deliveries: Driver<[DeliveryPage]>! { get }
+    var deliveries: Driver<[DeliveryListingSection]>! { get }
     var isLoading: Driver<Bool>! { get }
 }
 
@@ -35,12 +35,12 @@ final class DeliveryListingViewModel: DeliveryListingViewModelType, DeliveryList
     
     // MARK: - Inputs
   
-    private var viewDidLoadProperty = BehaviorRelay<Void?>(value: nil)
+    var viewDidLoadProperty = PublishSubject<Void?>()
     func viewDidLoad() {
-        self.viewDidLoadProperty.accept(())
+        self.viewDidLoadProperty.onNext(())
     }
     
-    private var nextPageProperty = PublishSubject<Int>()
+    var nextPageProperty = PublishSubject<Int>()
     func nextPage(page: Int) {
         self.nextPageProperty.onNext(page)
     }
@@ -53,7 +53,7 @@ final class DeliveryListingViewModel: DeliveryListingViewModelType, DeliveryList
     // MARK: - Outputs
     
     internal var error: Driver<String>!
-    internal var deliveries: Driver<[DeliveryPage]>!
+    internal var deliveries: Driver<[DeliveryListingSection]>!
     internal var isLoading: Driver<Bool>!
     
     // MARK: - Attributes
@@ -63,7 +63,7 @@ final class DeliveryListingViewModel: DeliveryListingViewModelType, DeliveryList
     
     init(defaultFetchDeliveryPageUseCase: DefaultFetchDeliveryUseCase) {
         
-        let deliveryRequest = nextPageProperty.debug("requesting page")
+        let deliveryRequest = nextPageProperty
             .flatMapLatest {[weak self] page -> Observable<LoadingResult<[DeliveryPage]>> in
                 let requestValue = FetchDeliveryUseCaseReqValue(page: page, offset: self?.offset ?? 0)
                 return defaultFetchDeliveryPageUseCase.execute(requestValue: requestValue)
@@ -77,7 +77,11 @@ final class DeliveryListingViewModel: DeliveryListingViewModelType, DeliveryList
             .disposed(by: disposeBag)
         
         self.deliveries = deliveryResponse
-            .asDriver(onErrorJustReturn: [])
+            .map {
+                return $0.compactMap { page in
+                    DeliveryListingSection(items: page.deliveries)
+                }
+            }.asDriver(onErrorJustReturn: [])
         
         self.viewDidLoadProperty
             .filterNil()
@@ -99,6 +103,3 @@ final class DeliveryListingViewModel: DeliveryListingViewModelType, DeliveryList
             .asDriver(onErrorJustReturn: false)
     }
 }
-
-
-

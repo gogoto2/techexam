@@ -16,6 +16,7 @@ target 'technicalexam' do
   
   # Utilites
   pod 'Swinject'
+  pod 'SwiftLint'
   
   # Network
   pod 'Moya'

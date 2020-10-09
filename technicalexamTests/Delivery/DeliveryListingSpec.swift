@@ -13,6 +13,9 @@ import Swinject
 import Moya
 import RealmSwift
 import RxBlocking
+import RxTest
+import RxSwift
+import RxNimble
 
 @testable import technicalexam
 
@@ -27,6 +30,8 @@ class DeliveryListingSpec: QuickSpec {
             var repoProvider: RealmRepository<DeliveryPage>!
             var fetchDeliveryUseCase: DefaultFetchDeliveryUseCase!
             var viewModel: DeliveryListingViewModel!
+            var scheduler: TestScheduler!
+            var disposeBag: DisposeBag!
             
             beforeSuite {
                 self.testRealm = try! Realm(configuration: Realm.Configuration(inMemoryIdentifier: self.name))
@@ -45,6 +50,10 @@ class DeliveryListingSpec: QuickSpec {
                         deliveryRepository: repoProvider)
                     
                     viewModel = DeliveryListingViewModel(defaultFetchDeliveryPageUseCase: fetchDeliveryUseCase)
+                    
+                    scheduler = TestScheduler(initialClock: 0)
+                    
+                    disposeBag = DisposeBag()
                 }
                 
                 afterEach {
@@ -63,35 +72,60 @@ class DeliveryListingSpec: QuickSpec {
                 }
                 
                 it("can paginate") {
-                    viewModel.inputs.viewDidLoad()
-                    viewModel.inputs.nextPage(page: 2)
+                    let deliveryPagesCount = scheduler.createObserver(Int.self)
                     
-                    let deliveries = try! viewModel.outputs.deliveries.toBlocking().first()
-                  
-                    expect(deliveries?[0].deliveries.count)
-                        .to(equal(5))
+                    viewModel.outputs.deliveries.asObservable()
+                        .map { $0.count }
+                        .bind(to: deliveryPagesCount)
+                        .disposed(by: disposeBag)
                     
-                    expect(deliveries?[1].deliveries.count)
-                        .to(equal(5))
+                    scheduler.createColdObservable([Recorded.next(1, ())])
+                        .subscribe(onNext: { event in
+                            viewModel.viewDidLoad()
+                        }).disposed(by: disposeBag)
                     
-                    expect(self.testRealm.objects(RealmDeliveryPage.self).count)
-                        .to(equal(2))
+                    scheduler.createColdObservable([Recorded.next(5, ())])
+                        .subscribe(onNext: { event in
+                            viewModel.nextPage(page: 1)
+                        }).disposed(by: disposeBag)
                     
-                    expect(self.testRealm.objects(RealmDelivery.self).count)
-                        .to(equal(10))
+                    scheduler.start()
+                    
+                    print("events \(deliveryPagesCount.events)")
+                    
+                    /// starts with zero cause db has zero data on it
+                    expect(deliveryPagesCount.events)
+                        .to(equal([Recorded.next(0,0),
+                                   Recorded.next(1,1),
+                                   Recorded.next(5,1)]))
                 }
                 
                 it("can refresh") {
-                    viewModel.inputs.viewDidLoad()
-                    viewModel.inputs.nextPage(page: 2)
                     
-                    expect(self.testRealm.objects(RealmDeliveryPage.self).count)
-                        .to(equal(2))
+                    let deliveryPagesCount = scheduler.createObserver(Int.self)
                     
-                    viewModel.inputs.refresh()
+                    viewModel.outputs.deliveries.asObservable()
+                        .map { $0.count }
+                        .bind(to: deliveryPagesCount)
+                        .disposed(by: disposeBag)
                     
-                    expect(self.testRealm.objects(RealmDeliveryPage.self).count)
-                        .to(equal(1))
+                    scheduler.createColdObservable([Recorded.next(5, ())])
+                        .subscribe(onNext: { event in
+                            viewModel.viewDidLoad()
+                        }).disposed(by: disposeBag)
+                    
+                    scheduler.createColdObservable([Recorded.next(20, ())])
+                        .subscribe(onNext: { event in
+                            viewModel.refresh()
+                        }).disposed(by: disposeBag)
+                    
+                    scheduler.start()
+                    
+                    /// starts with zero cause db has zero data on it
+                    expect(deliveryPagesCount.events)
+                        .to(equal([Recorded.next(0,0),
+                                   Recorded.next(5,1),
+                                   Recorded.next(20,1)]))
                 }
             }
         }

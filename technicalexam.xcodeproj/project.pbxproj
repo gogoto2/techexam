@@ -14,7 +14,6 @@
 		6A2A63D7252F137900091A13 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6A2A63D6252F137900091A13 /* Assets.xcassets */; };
 		6A2A63DA252F137900091A13 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6A2A63D9252F137900091A13 /* Preview Assets.xcassets */; };
 		6A2A63DD252F137900091A13 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A2A63DB252F137900091A13 /* LaunchScreen.storyboard */; };
-		6A2A63E8252F137900091A13 /* technicalexamTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2A63E7252F137900091A13 /* technicalexamTests.swift */; };
 		6A6CB9A9252F145900A52337 /* DeliveryListingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A6CB9A8252F145900A52337 /* DeliveryListingViewController.swift */; };
 		6A6CB9AE252F147100A52337 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A6CB9AD252F147100A52337 /* Coordinator.swift */; };
 		6AA01DB0252F1CD9007997E6 /* Observable+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AA01DAF252F1CD9007997E6 /* Observable+Ext.swift */; };
@@ -48,6 +47,15 @@
 		6AB2DD6D252F580700286EC0 /* DeliveryListingSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB2DD6C252F580700286EC0 /* DeliveryListingSpec.swift */; };
 		6AB2DDAD252F612500286EC0 /* StubDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB2DDAC252F612500286EC0 /* StubDataHelper.swift */; };
 		6AB2DDCB252F6B3800286EC0 /* delivery_json_success.json in Resources */ = {isa = PBXBuildFile; fileRef = 6AB2DDCA252F6B3800286EC0 /* delivery_json_success.json */; };
+		6ADB02BE25303849006DAF8E /* DeliveryListingSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ADB02BD25303849006DAF8E /* DeliveryListingSection.swift */; };
+		6ADB02C625303913006DAF8E /* DeliveryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ADB02C525303913006DAF8E /* DeliveryViewCell.swift */; };
+		6ADB02CA25303955006DAF8E /* With.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ADB02C925303955006DAF8E /* With.swift */; };
+		6ADB02CF25303A26006DAF8E /* BounceButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ADB02CE25303A26006DAF8E /* BounceButton.swift */; };
+		6ADB02D525303A70006DAF8E /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ADB02D425303A70006DAF8E /* UIView+Ext.swift */; };
+		6ADB02DB25303D47006DAF8E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ADB02DA25303D47006DAF8E /* Constants.swift */; };
+		6ADB02DF25303DD6006DAF8E /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ADB02DE25303DD6006DAF8E /* BaseCollectionViewCell.swift */; };
+		6ADB02E32530421A006DAF8E /* DeliveryCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ADB02E22530421A006DAF8E /* DeliveryCellViewModel.swift */; };
+		6ADB02ED25304717006DAF8E /* DeliveryViewCellHeaderViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ADB02EC25304717006DAF8E /* DeliveryViewCellHeaderViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,7 +77,6 @@
 		6A2A63DC252F137900091A13 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6A2A63DE252F137900091A13 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6A2A63E3252F137900091A13 /* technicalexamTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = technicalexamTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		6A2A63E7252F137900091A13 /* technicalexamTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = technicalexamTests.swift; sourceTree = "<group>"; };
 		6A2A63E9252F137900091A13 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6A6CB9A8252F145900A52337 /* DeliveryListingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryListingViewController.swift; sourceTree = "<group>"; };
 		6A6CB9AD252F147100A52337 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
@@ -104,6 +111,15 @@
 		6AB2DD6C252F580700286EC0 /* DeliveryListingSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryListingSpec.swift; sourceTree = "<group>"; };
 		6AB2DDAC252F612500286EC0 /* StubDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubDataHelper.swift; sourceTree = "<group>"; };
 		6AB2DDCA252F6B3800286EC0 /* delivery_json_success.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = delivery_json_success.json; sourceTree = "<group>"; };
+		6ADB02BD25303849006DAF8E /* DeliveryListingSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryListingSection.swift; sourceTree = "<group>"; };
+		6ADB02C525303913006DAF8E /* DeliveryViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryViewCell.swift; sourceTree = "<group>"; };
+		6ADB02C925303955006DAF8E /* With.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = With.swift; sourceTree = "<group>"; };
+		6ADB02CE25303A26006DAF8E /* BounceButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BounceButton.swift; sourceTree = "<group>"; };
+		6ADB02D425303A70006DAF8E /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
+		6ADB02DA25303D47006DAF8E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		6ADB02DE25303DD6006DAF8E /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
+		6ADB02E22530421A006DAF8E /* DeliveryCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryCellViewModel.swift; sourceTree = "<group>"; };
+		6ADB02EC25304717006DAF8E /* DeliveryViewCellHeaderViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryViewCellHeaderViewCell.swift; sourceTree = "<group>"; };
 		7E1F12044479A49CE89D3E3B /* Pods_technicalexam.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_technicalexam.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9EB6BA7B43368E46073EFDDC /* Pods-technicalexam.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-technicalexam.release.xcconfig"; path = "Target Support Files/Pods-technicalexam/Pods-technicalexam.release.xcconfig"; sourceTree = "<group>"; };
 		C33A6B372938CDB2B66EB785 /* Pods-technicalexamTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-technicalexamTests.debug.xcconfig"; path = "Target Support Files/Pods-technicalexamTests/Pods-technicalexamTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -185,7 +201,6 @@
 			children = (
 				6AB2DDAC252F612500286EC0 /* StubDataHelper.swift */,
 				6AB2DD6B252F57E100286EC0 /* Delivery */,
-				6A2A63E7252F137900091A13 /* technicalexamTests.swift */,
 				6A2A63E9252F137900091A13 /* Info.plist */,
 			);
 			path = technicalexamTests;
@@ -194,6 +209,7 @@
 		6A2A63F2252F140900091A13 /* Delivery Listing */ = {
 			isa = PBXGroup;
 			children = (
+				6ADB02BC2530383D006DAF8E /* Cells */,
 				6A6CB9A8252F145900A52337 /* DeliveryListingViewController.swift */,
 				6AA01E35252F302C007997E6 /* DeliveryListingViewModel.swift */,
 			);
@@ -214,6 +230,7 @@
 				6AA01DAF252F1CD9007997E6 /* Observable+Ext.swift */,
 				6AA01E2D252F2AF9007997E6 /* Object+Ext.swift */,
 				6AB2DD45252F4A9C00286EC0 /* Array+Ext.swift */,
+				6ADB02D425303A70006DAF8E /* UIView+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -290,10 +307,13 @@
 		6AA01DEC252F22C9007997E6 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				6ADB02CD25303A13006DAF8E /* Widgets */,
 				6AA01DED252F22DE007997E6 /* EnvironmentVariables.swift */,
 				6AA01E78252F3A7F007997E6 /* Response+ObjectMapper.swift */,
 				6AA01E7C252F3AAD007997E6 /* Moya+ObjectMapper.swift */,
 				6AA01E80252F3B53007997E6 /* ObseravableType+ObjectMapper.swift */,
+				6ADB02C925303955006DAF8E /* With.swift */,
+				6ADB02DA25303D47006DAF8E /* Constants.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -351,6 +371,26 @@
 			path = stub;
 			sourceTree = "<group>";
 		};
+		6ADB02BC2530383D006DAF8E /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				6ADB02BD25303849006DAF8E /* DeliveryListingSection.swift */,
+				6ADB02C525303913006DAF8E /* DeliveryViewCell.swift */,
+				6ADB02E22530421A006DAF8E /* DeliveryCellViewModel.swift */,
+				6ADB02EC25304717006DAF8E /* DeliveryViewCellHeaderViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		6ADB02CD25303A13006DAF8E /* Widgets */ = {
+			isa = PBXGroup;
+			children = (
+				6ADB02CE25303A26006DAF8E /* BounceButton.swift */,
+				6ADB02DE25303DD6006DAF8E /* BaseCollectionViewCell.swift */,
+			);
+			path = Widgets;
+			sourceTree = "<group>";
+		};
 		C4B1CB2DE4CC653D2EF210DF /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -383,6 +423,7 @@
 				6A2A63CA252F137200091A13 /* Frameworks */,
 				6A2A63CB252F137200091A13 /* Resources */,
 				CA0852F777164AAFB01F3353 /* [CP] Embed Pods Frameworks */,
+				6A460A202530191A002A8349 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -490,6 +531,23 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-technicalexamTests/Pods-technicalexamTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		6A460A202530191A002A8349 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
+		};
 		AAB904570B557F991FCCE71B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -559,6 +617,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6AA01DFE252F25FD007997E6 /* RealmRepresentable.swift in Sources */,
+				6ADB02DB25303D47006DAF8E /* Constants.swift in Sources */,
 				6AA01DCC252F2013007997E6 /* Assembler.swift in Sources */,
 				6AA01E07252F2826007997E6 /* Delivery.swift in Sources */,
 				6AA01E09252F2826007997E6 /* Sender.swift in Sources */,
@@ -568,17 +627,23 @@
 				6AA01DD0252F2034007997E6 /* NetworkAssembly.swift in Sources */,
 				6AA01DF2252F2461007997E6 /* BaseService.swift in Sources */,
 				6AA01DF7252F2555007997E6 /* RealmRepository.swift in Sources */,
+				6ADB02CA25303955006DAF8E /* With.swift in Sources */,
 				6A2A63D3252F137200091A13 /* SceneDelegate.swift in Sources */,
 				6AA01E79252F3A7F007997E6 /* Response+ObjectMapper.swift in Sources */,
+				6ADB02D525303A70006DAF8E /* UIView+Ext.swift in Sources */,
+				6ADB02ED25304717006DAF8E /* DeliveryViewCellHeaderViewCell.swift in Sources */,
 				6AA01E2A252F2A3C007997E6 /* RealmSender.swift in Sources */,
 				6AA01E7D252F3AAD007997E6 /* Moya+ObjectMapper.swift in Sources */,
 				6AA01E59252F360F007997E6 /* RealmDeliveryPage.swift in Sources */,
+				6ADB02E32530421A006DAF8E /* DeliveryCellViewModel.swift in Sources */,
 				6AA01E08252F2826007997E6 /* Route.swift in Sources */,
+				6ADB02CF25303A26006DAF8E /* BounceButton.swift in Sources */,
 				6AA01E26252F2938007997E6 /* RealmDelivery.swift in Sources */,
 				6AA01DE7252F222D007997E6 /* DeliveryService.swift in Sources */,
 				6A6CB9AE252F147100A52337 /* Coordinator.swift in Sources */,
 				6AB2DD46252F4A9C00286EC0 /* Array+Ext.swift in Sources */,
 				6AA01DEE252F22DE007997E6 /* EnvironmentVariables.swift in Sources */,
+				6ADB02C625303913006DAF8E /* DeliveryViewCell.swift in Sources */,
 				6AA01DC1252F1F6F007997E6 /* SceneCoordinator.swift in Sources */,
 				6AA01DBA252F1EC1007997E6 /* DomainConvertable.swift in Sources */,
 				6AA01EB9252F3CEB007997E6 /* DeliveryPage.swift in Sources */,
@@ -589,6 +654,8 @@
 				6AA01E2E252F2AF9007997E6 /* Object+Ext.swift in Sources */,
 				6AA01DB0252F1CD9007997E6 /* Observable+Ext.swift in Sources */,
 				6A6CB9A9252F145900A52337 /* DeliveryListingViewController.swift in Sources */,
+				6ADB02BE25303849006DAF8E /* DeliveryListingSection.swift in Sources */,
+				6ADB02DF25303DD6006DAF8E /* BaseCollectionViewCell.swift in Sources */,
 				6AA01DD6252F2045007997E6 /* RepositoryAssembly.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -597,7 +664,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6A2A63E8252F137900091A13 /* technicalexamTests.swift in Sources */,
 				6AB2DD6D252F580700286EC0 /* DeliveryListingSpec.swift in Sources */,
 				6AB2DDAD252F612500286EC0 /* StubDataHelper.swift in Sources */,
 			);
