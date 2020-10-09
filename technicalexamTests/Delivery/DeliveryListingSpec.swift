@@ -35,6 +35,9 @@ class DeliveryListingSpec: QuickSpec {
             
             beforeSuite {
                 self.testRealm = try! Realm(configuration: Realm.Configuration(inMemoryIdentifier: self.name))
+                try! self.testRealm.write {
+                    self.testRealm.deleteAll()
+                }
             }
             
             context("on successful response") {
@@ -56,18 +59,12 @@ class DeliveryListingSpec: QuickSpec {
                     disposeBag = DisposeBag()
                 }
                 
-                afterEach {
-                    try! self.testRealm.write {
-                        self.testRealm.deleteAll()
-                    }
-                }
-                
                 it("can list deliveries") {
                     viewModel.inputs.viewDidLoad()
                     
                     let deliveries = try! viewModel.outputs.deliveries.toBlocking().first()
                     
-                    expect(deliveries?.first?.deliveries.count)
+                    expect(deliveries?.first?.items.count)
                         .to(equal(5))
                 }
                 
@@ -80,24 +77,21 @@ class DeliveryListingSpec: QuickSpec {
                         .disposed(by: disposeBag)
                     
                     scheduler.createColdObservable([Recorded.next(1, ())])
-                        .subscribe(onNext: { event in
+                        .subscribe(onNext: { _ in
                             viewModel.viewDidLoad()
                         }).disposed(by: disposeBag)
                     
                     scheduler.createColdObservable([Recorded.next(5, ())])
-                        .subscribe(onNext: { event in
-                            viewModel.nextPage(page: 1)
+                        .subscribe(onNext: { _ in
+                            viewModel.nextPage()
                         }).disposed(by: disposeBag)
                     
                     scheduler.start()
                     
-                    print("events \(deliveryPagesCount.events)")
-                    
-                    /// starts with zero cause db has zero data on it
                     expect(deliveryPagesCount.events)
-                        .to(equal([Recorded.next(0,0),
-                                   Recorded.next(1,1),
-                                   Recorded.next(5,1)]))
+                        .to(equal([Recorded.next(0, 0),
+                                   Recorded.next(1, 1),
+                                   Recorded.next(5, 2)]))
                 }
                 
                 it("can refresh") {
@@ -110,22 +104,27 @@ class DeliveryListingSpec: QuickSpec {
                         .disposed(by: disposeBag)
                     
                     scheduler.createColdObservable([Recorded.next(5, ())])
-                        .subscribe(onNext: { event in
+                        .subscribe(onNext: { _ in
                             viewModel.viewDidLoad()
                         }).disposed(by: disposeBag)
                     
+                    scheduler.createColdObservable([Recorded.next(10, ())])
+                        .subscribe(onNext: { _ in
+                            viewModel.nextPage()
+                        }).disposed(by: disposeBag)
+                    
                     scheduler.createColdObservable([Recorded.next(20, ())])
-                        .subscribe(onNext: { event in
+                        .subscribe(onNext: { _ in
                             viewModel.refresh()
                         }).disposed(by: disposeBag)
                     
                     scheduler.start()
                     
-                    /// starts with zero cause db has zero data on it
                     expect(deliveryPagesCount.events)
-                        .to(equal([Recorded.next(0,0),
-                                   Recorded.next(5,1),
-                                   Recorded.next(20,1)]))
+                        .to(equal([Recorded.next(0, 0),
+                                   Recorded.next(5, 1),
+                                   Recorded.next(10, 2),
+                                   Recorded.next(20, 1)]))
                 }
             }
         }

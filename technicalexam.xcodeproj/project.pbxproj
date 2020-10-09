@@ -56,6 +56,7 @@
 		6ADB02DF25303DD6006DAF8E /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ADB02DE25303DD6006DAF8E /* BaseCollectionViewCell.swift */; };
 		6ADB02E32530421A006DAF8E /* DeliveryCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ADB02E22530421A006DAF8E /* DeliveryCellViewModel.swift */; };
 		6ADB02ED25304717006DAF8E /* DeliveryViewCellHeaderViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ADB02EC25304717006DAF8E /* DeliveryViewCellHeaderViewCell.swift */; };
+		6ADB02F325305644006DAF8E /* UIScrollView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ADB02F225305644006DAF8E /* UIScrollView+Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -120,6 +121,7 @@
 		6ADB02DE25303DD6006DAF8E /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		6ADB02E22530421A006DAF8E /* DeliveryCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryCellViewModel.swift; sourceTree = "<group>"; };
 		6ADB02EC25304717006DAF8E /* DeliveryViewCellHeaderViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryViewCellHeaderViewCell.swift; sourceTree = "<group>"; };
+		6ADB02F225305644006DAF8E /* UIScrollView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Ext.swift"; sourceTree = "<group>"; };
 		7E1F12044479A49CE89D3E3B /* Pods_technicalexam.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_technicalexam.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9EB6BA7B43368E46073EFDDC /* Pods-technicalexam.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-technicalexam.release.xcconfig"; path = "Target Support Files/Pods-technicalexam/Pods-technicalexam.release.xcconfig"; sourceTree = "<group>"; };
 		C33A6B372938CDB2B66EB785 /* Pods-technicalexamTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-technicalexamTests.debug.xcconfig"; path = "Target Support Files/Pods-technicalexamTests/Pods-technicalexamTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -216,6 +218,13 @@
 			path = "Delivery Listing";
 			sourceTree = "<group>";
 		};
+		6A5B037525306959009960C0 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
 		6A6CB9AC252F146100A52337 /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
@@ -231,6 +240,7 @@
 				6AA01E2D252F2AF9007997E6 /* Object+Ext.swift */,
 				6AB2DD45252F4A9C00286EC0 /* Array+Ext.swift */,
 				6ADB02D425303A70006DAF8E /* UIView+Ext.swift */,
+				6ADB02F225305644006DAF8E /* UIScrollView+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -270,6 +280,7 @@
 		6AA01DC6252F1F94007997E6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				6A5B037525306959009960C0 /* New Group */,
 				6A2A63F2252F140900091A13 /* Delivery Listing */,
 			);
 			path = Views;
@@ -651,6 +662,7 @@
 				6AA01E32252F2C66007997E6 /* RealmRoute.swift in Sources */,
 				6AA01E36252F302C007997E6 /* DeliveryListingViewModel.swift in Sources */,
 				6AA01E81252F3B53007997E6 /* ObseravableType+ObjectMapper.swift in Sources */,
+				6ADB02F325305644006DAF8E /* UIScrollView+Ext.swift in Sources */,
 				6AA01E2E252F2AF9007997E6 /* Object+Ext.swift in Sources */,
 				6AA01DB0252F1CD9007997E6 /* Observable+Ext.swift in Sources */,
 				6A6CB9A9252F145900A52337 /* DeliveryListingViewController.swift in Sources */,

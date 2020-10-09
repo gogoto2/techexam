@@ -13,7 +13,7 @@ import RxOptional
 
 protocol DeliveryListingViewModelInputs {
     func viewDidLoad()
-    func nextPage(page: Int)
+    func nextPage()
     func refresh()
 }
 
@@ -40,9 +40,9 @@ final class DeliveryListingViewModel: DeliveryListingViewModelType, DeliveryList
         self.viewDidLoadProperty.onNext(())
     }
     
-    var nextPageProperty = PublishSubject<Int>()
-    func nextPage(page: Int) {
-        self.nextPageProperty.onNext(page)
+    var nextPageProperty = PublishSubject<Void>()
+    func nextPage() {
+        self.nextPageProperty.onNext(())
     }
     
     private var refreshProperty = PublishSubject<Void>()
@@ -59,19 +59,22 @@ final class DeliveryListingViewModel: DeliveryListingViewModelType, DeliveryList
     // MARK: - Attributes
     
     private let disposeBag = DisposeBag()
-    private let offset = 25
+    private let limit = 25
     
     init(defaultFetchDeliveryPageUseCase: DefaultFetchDeliveryUseCase) {
         
-        let deliveryRequest = nextPageProperty
+        let currentPage = BehaviorRelay<Int?>(value: nil)
+    
+        let deliveryRequest = currentPage
+            .filterNil()
             .flatMapLatest {[weak self] page -> Observable<LoadingResult<[DeliveryPage]>> in
-                let requestValue = FetchDeliveryUseCaseReqValue(page: page, offset: self?.offset ?? 0)
+                let requestValue = FetchDeliveryUseCaseReqValue(limit: self?.limit ?? 0, offset: page)
                 return defaultFetchDeliveryPageUseCase.execute(requestValue: requestValue)
                     .monitorResult()
             }.share()
         
         let deliveryResponse = BehaviorRelay<[DeliveryPage]>(value: [])
-
+        
         deliveryRequest.elements()
             .bind(to: deliveryResponse)
             .disposed(by: disposeBag)
@@ -86,14 +89,14 @@ final class DeliveryListingViewModel: DeliveryListingViewModelType, DeliveryList
         self.viewDidLoadProperty
             .filterNil()
             .map { _ in 1 }
-            .subscribe(onNext: {[weak self] page in
-                self?.nextPageProperty.onNext(page)
-            }).disposed(by: disposeBag)
+            .bind(to: currentPage)
+            .disposed(by: disposeBag)
         
         self.refreshProperty
-            .bind(to: viewDidLoadProperty)
+            .map { _ in 1 }
+            .bind(to: currentPage)
             .disposed(by: disposeBag)
-
+        
         self.error = deliveryRequest.errors()
             .debug("errors")
             .map { $0.localizedDescription }
@@ -101,5 +104,14 @@ final class DeliveryListingViewModel: DeliveryListingViewModelType, DeliveryList
         
         self.isLoading = deliveryRequest.loading()
             .asDriver(onErrorJustReturn: false)
+        
+        self.nextPageProperty
+            .withLatestFrom(isLoading)
+            .filter { !$0 }
+            .withLatestFrom(currentPage)
+            .filterNil()
+            .map { $0 + 1 }
+            .bind(to: currentPage)
+            .disposed(by: disposeBag)
     }
 }

@@ -27,23 +27,19 @@ final class DefaultFetchDeliveryUseCase: FetchDeliveryUseCase {
 
     func execute(requestValue: FetchDeliveryUseCaseReqValue) -> Observable<[DeliveryPage]> {
         Observable<[DeliveryPage]>.create { observer in
-            
-            if requestValue.page == 1 {
-                self.deliveryRepository.deleteAll()
-            }
-            
-            let serviceDisposable = self.deliveryService.rx.request(.getListing(page: requestValue.page,
-                                                        offset: requestValue.offset))
-                .mapArray(Delivery.self).subscribe { deliveries in
+            let serviceDisposable = self.deliveryService.rx
+                .request(.getListing(page: requestValue.limit, offset: requestValue.offset))
+                .mapArray(Delivery.self)
+                .subscribe(onSuccess: { deliveries in
                     let deliveryPage = DeliveryPage(deliveries: deliveries,
-                                                    page: requestValue.page)
+                                                    page: requestValue.offset)
                     self.deliveryRepository.save(entity: deliveryPage)
-                    print("prick saving")
-                } onError: { error in
+                }, onError: { error in
                     observer.onError(error)
-                }
-            
-            let repoDisposable = self.deliveryRepository.queryAll()
+                })
+
+            let query = NSPredicate(format: "page <= %i", requestValue.offset)
+            let repoDisposable = self.deliveryRepository.query(with: query)
                 .subscribe(onNext: { wallet in
                     observer.onNext(wallet)
                 })
@@ -61,6 +57,6 @@ final class DefaultFetchDeliveryUseCase: FetchDeliveryUseCase {
 }
 
 struct FetchDeliveryUseCaseReqValue {
-    let page: Int
+    let limit: Int
     let offset: Int
 }

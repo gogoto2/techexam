@@ -39,7 +39,7 @@ extension DeliveryService: BaseService {
         case let .getListing(page, offset):
             return .requestParameters(
                 parameters: [
-                    "page": page,
+                    "limit": page,
                     "offset": offset
                 ],
                 encoding: URLEncoding.queryString
