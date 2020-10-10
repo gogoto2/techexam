@@ -16,6 +16,10 @@
 		6A393F7D2531231500C6A177 /* DateTimeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A393F7C2531231500C6A177 /* DateTimeHelper.swift */; };
 		6A393FA12531335100C6A177 /* RowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A393FA02531335100C6A177 /* RowView.swift */; };
 		6A393FA52531366700C6A177 /* DeliveryCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A393FA42531366700C6A177 /* DeliveryCoordinator.swift */; };
+		6A393FAA25313CDD00C6A177 /* Roboto-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6A393FA925313CDD00C6A177 /* Roboto-Bold.ttf */; };
+		6A393FAE25313CEA00C6A177 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6A393FAD25313CEA00C6A177 /* Roboto-Regular.ttf */; };
+		6A393FB2253145DB00C6A177 /* SeparatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A393FB1253145DB00C6A177 /* SeparatorView.swift */; };
+		6A393FB825314FE800C6A177 /* ViewNavbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A393FB725314FE800C6A177 /* ViewNavbar.swift */; };
 		6A5B037925306A49009960C0 /* DeliveryDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A5B037825306A49009960C0 /* DeliveryDetailsViewController.swift */; };
 		6A5B03852530F111009960C0 /* DeliveryDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A5B03842530F111009960C0 /* DeliveryDetailsViewModel.swift */; };
 		6A5B03952530F76F009960C0 /* CurrencyHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A5B03942530F76F009960C0 /* CurrencyHelper.swift */; };
@@ -93,6 +97,10 @@
 		6A393F7C2531231500C6A177 /* DateTimeHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTimeHelper.swift; sourceTree = "<group>"; };
 		6A393FA02531335100C6A177 /* RowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowView.swift; sourceTree = "<group>"; };
 		6A393FA42531366700C6A177 /* DeliveryCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryCoordinator.swift; sourceTree = "<group>"; };
+		6A393FA925313CDD00C6A177 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
+		6A393FAD25313CEA00C6A177 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
+		6A393FB1253145DB00C6A177 /* SeparatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparatorView.swift; sourceTree = "<group>"; };
+		6A393FB725314FE800C6A177 /* ViewNavbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewNavbar.swift; sourceTree = "<group>"; };
 		6A5B037825306A49009960C0 /* DeliveryDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryDetailsViewController.swift; sourceTree = "<group>"; };
 		6A5B03842530F111009960C0 /* DeliveryDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryDetailsViewModel.swift; sourceTree = "<group>"; };
 		6A5B03942530F76F009960C0 /* CurrencyHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyHelper.swift; sourceTree = "<group>"; };
@@ -234,6 +242,15 @@
 			path = "Delivery Listing";
 			sourceTree = "<group>";
 		};
+		6A393FA825313C5E00C6A177 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				6A393FA925313CDD00C6A177 /* Roboto-Bold.ttf */,
+				6A393FAD25313CEA00C6A177 /* Roboto-Regular.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		6A5B0376253069BC009960C0 /* Delivery Details */ = {
 			isa = PBXGroup;
 			children = (
@@ -250,6 +267,7 @@
 			children = (
 				6A5B03A4253100E9009960C0 /* LabelWithPlaceHolder.swift */,
 				6A393FA02531335100C6A177 /* RowView.swift */,
+				6A393FB1253145DB00C6A177 /* SeparatorView.swift */,
 			);
 			path = Widgets;
 			sourceTree = "<group>";
@@ -309,6 +327,7 @@
 		6AA01DC6252F1F94007997E6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				6ADB02CD25303A13006DAF8E /* Widgets */,
 				6A5B0376253069BC009960C0 /* Delivery Details */,
 				6A2A63F2252F140900091A13 /* Delivery Listing */,
 			);
@@ -339,7 +358,7 @@
 		6AA01DEC252F22C9007997E6 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				6ADB02CD25303A13006DAF8E /* Widgets */,
+				6A393FA825313C5E00C6A177 /* Fonts */,
 				6AA01DED252F22DE007997E6 /* EnvironmentVariables.swift */,
 				6A5B03942530F76F009960C0 /* CurrencyHelper.swift */,
 				6A393F7C2531231500C6A177 /* DateTimeHelper.swift */,
@@ -422,6 +441,7 @@
 			children = (
 				6ADB02CE25303A26006DAF8E /* BounceButton.swift */,
 				6ADB02DE25303DD6006DAF8E /* BaseCollectionViewCell.swift */,
+				6A393FB725314FE800C6A177 /* ViewNavbar.swift */,
 			);
 			path = Widgets;
 			sourceTree = "<group>";
@@ -534,6 +554,8 @@
 			files = (
 				6A2A63DD252F137900091A13 /* LaunchScreen.storyboard in Resources */,
 				6A2A63DA252F137900091A13 /* Preview Assets.xcassets in Resources */,
+				6A393FAE25313CEA00C6A177 /* Roboto-Regular.ttf in Resources */,
+				6A393FAA25313CDD00C6A177 /* Roboto-Bold.ttf in Resources */,
 				6A2A63D7252F137900091A13 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -661,6 +683,8 @@
 				6AA01E3B252F3248007997E6 /* DefaultFetchDeliveryListingUseCase.swift in Sources */,
 				6AA01DD0252F2034007997E6 /* NetworkAssembly.swift in Sources */,
 				6AA01DF2252F2461007997E6 /* BaseService.swift in Sources */,
+				6A393FB825314FE800C6A177 /* ViewNavbar.swift in Sources */,
+				6A393FB2253145DB00C6A177 /* SeparatorView.swift in Sources */,
 				6AA01DF7252F2555007997E6 /* RealmRepository.swift in Sources */,
 				6ADB02CA25303955006DAF8E /* With.swift in Sources */,
 				6A2A63D3252F137200091A13 /* SceneDelegate.swift in Sources */,

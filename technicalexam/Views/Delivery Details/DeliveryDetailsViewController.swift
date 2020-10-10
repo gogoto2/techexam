@@ -22,7 +22,7 @@ class DeliveryDetailsViewController: UIViewController {
     
     internal var imageViewGoods = UIImageView().with {
         $0.addShadow()
-        $0.addCornerRadius()
+        $0.addCornerRadius(16)
     }
     
     internal var labelPickUpTime = UILabel().with {
@@ -40,29 +40,79 @@ class DeliveryDetailsViewController: UIViewController {
     private lazy var scrollView: UIScrollView = {
         let frame = CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight)
         let scrollView = UIScrollView(frame: frame)
-        scrollView.backgroundColor = .clear
+        scrollView.backgroundColor = #colorLiteral(red: 0.92900002, green: 0.9330000281, blue: 0.9369999766, alpha: 1)
+        scrollView.layer.cornerRadius = 20
+        scrollView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         return scrollView
     }()
     
-    private lazy var labelPlaceHolderIdAndPickUp = LabelWithPlaceHolder()
+    private lazy var labelPlaceHolderIdAndPickUp = LabelWithPlaceHolder().with {
+        $0.labelPlaceholder.font = UIFont(name: fontRobotoBold, size: 16)
+        $0.labelPlaceholder.textColor = .white
+        
+        $0.labelDetails.font = UIFont(name: fontRobotoRegular, size: 18)
+        $0.labelDetails.textColor = .white
+        $0.labelDetails.text = "Delivery Information"
+    }
     
-    private lazy var labelPlaceHolderFrom = LabelWithPlaceHolder()
+    private lazy var labelPlaceHolderFrom = LabelWithPlaceHolder().with {
+        $0.labelPlaceholder.text = "From"
+    }
     
-    private lazy var labelPlaceHolderTo = LabelWithPlaceHolder()
+    private lazy var labelPlaceHolderTo = LabelWithPlaceHolder().with {
+        $0.labelPlaceholder.text = "To"
+    }
     
-    private lazy var rowDeliveryFee = RowView()
+    private lazy var rowDeliveryFee = RowView().with {
+        $0.labelTitle.text = "Delivery Fee"
+    }
     
-    private lazy var rowDeliverySurcharge = RowView()
+    private lazy var rowDeliverySurcharge = RowView().with {
+        $0.labelTitle.text = "Surcharge"
+    }
 
-    private lazy var rowDeliveryTotal = RowView()
+    private lazy var rowDeliveryTotal = RowView().with {
+        $0.labelTitle.font = UIFont.init(name: fontRobotoRegular, size: 16)
+        $0.labelTitle.text = "Total Price"
+        $0.labelTitle.textColor = .black
+    }
     
-    private lazy var labelPlaceHolderName = LabelWithPlaceHolder()
+    private lazy var labelDeliveryInfo = UILabel().with {
+        $0.text = "\nPackage Information"
+        $0.numberOfLines = 0
+        $0.font = UIFont(name: fontRobotoBold, size: 20)
+        $0.textColor = .black
+    }
     
-    private lazy var labelPlaceHolderPhone = LabelWithPlaceHolder()
+    private lazy var viewNavbar = ViewNavbar()
     
-    private lazy var labelPlaceHolderEmail = LabelWithPlaceHolder()
+    private lazy var labelPlaceHolderDeliveryID = LabelWithPlaceHolder().with {
+        $0.labelPlaceholder.text = "Delivery ID"
+    }
+    
+    private lazy var labelPlaceHolderName = LabelWithPlaceHolder().with {
+        $0.labelPlaceholder.text = "Name"
+    }
+    
+    private lazy var labelPlaceHolderPhone = LabelWithPlaceHolder().with {
+        $0.labelPlaceholder.text = "Phone Number"
+    }
+    
+    private lazy var labelPlaceHolderEmail = LabelWithPlaceHolder().with {
+        $0.labelPlaceholder.text = "Email Address"
+    }
+    
+    private lazy var labelPlaceHolderRemarks = LabelWithPlaceHolder().with {
+        $0.labelPlaceholder.text = "Remarks"
+    }
 
-    private lazy var labelPlaceHolderPickUpTime = LabelWithPlaceHolder()
+    private lazy var labelPlaceHolderPickUpTime = LabelWithPlaceHolder().with {
+        $0.labelPlaceholder.text = "Pickup Time"
+    }
+    
+    private lazy var viewFeeDividerTop = SeparatorView()
+    
+    private lazy var viewFeeDividerBottom = SeparatorView()
     
     private let stackView = UIStackView().with {
         $0.distribution = .equalSpacing
@@ -79,7 +129,12 @@ class DeliveryDetailsViewController: UIViewController {
         self.delivery = delivery
         super.init(nibName: nil, bundle: nil)
     }
-    
+  
+//    override func viewDidLayoutSubviews() {
+//        scrollView.addCornerRadius()
+//        super.viewDidLayoutSubviews()
+//    }
+      
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -100,45 +155,60 @@ extension DeliveryDetailsViewController {
 extension DeliveryDetailsViewController {
     private func setupViews() {
         
-        view.backgroundColor = #colorLiteral(red: 0.92900002, green: 0.9330000281, blue: 0.9369999766, alpha: 1)
+        view.backgroundColor = #colorLiteral(red: 0.9570000172, green: 0.2630000114, blue: 0.2119999975, alpha: 1)
+        
+        navigationController?.navigationBar.isHidden = true
+
+        view.addSubview(viewNavbar)
+        viewNavbar.snp.makeConstraints {
+            $0.leading.trailing.top.equalToSuperview()
+            $0.height.equalTo(160)
+        }
         
         view.addSubview(scrollView)
         scrollView.snp.makeConstraints { (make) in
-            make.top.equalToSuperview()
+            make.top.equalTo(viewNavbar.snp.bottom).offset(defaultPadding)
             make.leading.trailing.bottom.equalTo(view)
         }
         
         scrollView.addSubview(contentView)
         contentView.snp.makeConstraints { (make) in
             make.top.bottom.equalTo(scrollView)
-            make.leading.trailing.equalTo(view)
+            make.leading.trailing.equalTo(view).inset(defaultPadding * 2)
         }
         
-        contentView.addSubview(imageViewGoods)
+        viewNavbar.addSubview(imageViewGoods)
         imageViewGoods.snp.makeConstraints {
-            $0.leading.top.equalToSuperview()
-            $0.height.width.equalTo(40)
+            $0.centerY.equalToSuperview().offset(20)
+            $0.leading.equalToSuperview().inset(40)
+            $0.height.width.equalTo(70)
         }
         
-        contentView.addSubview(labelPlaceHolderIdAndPickUp)
+        viewNavbar.addSubview(labelPlaceHolderIdAndPickUp)
         labelPlaceHolderIdAndPickUp.snp.makeConstraints {
-            $0.leading.equalTo(imageViewGoods.snp.trailing)
-            $0.top.trailing.equalToSuperview()
+            $0.leading.equalTo(imageViewGoods.snp.trailing).offset(defaultPadding)
+            $0.centerY.equalTo(imageViewGoods)
+            $0.trailing.equalToSuperview()
         }
        
         stackView.addArrangedSubview(labelPlaceHolderFrom)
         stackView.addArrangedSubview(labelPlaceHolderTo)
+        stackView.addArrangedSubview(viewFeeDividerTop)
         stackView.addArrangedSubview(rowDeliveryFee)
         stackView.addArrangedSubview(rowDeliverySurcharge)
+        stackView.addArrangedSubview(viewFeeDividerBottom)
         stackView.addArrangedSubview(rowDeliveryTotal)
+        stackView.addArrangedSubview(labelDeliveryInfo)
+        stackView.addArrangedSubview(labelPlaceHolderDeliveryID)
         stackView.addArrangedSubview(labelPlaceHolderName)
         stackView.addArrangedSubview(labelPlaceHolderPhone)
         stackView.addArrangedSubview(labelPlaceHolderEmail)
+        stackView.addArrangedSubview(labelPlaceHolderRemarks)
         stackView.addArrangedSubview(labelPlaceHolderPickUpTime)
                 
         contentView.addSubview(stackView)
         stackView.snp.makeConstraints {
-            $0.top.equalTo(labelPlaceHolderIdAndPickUp.snp.bottom)
+            $0.top.equalToSuperview().offset(defaultPadding * 3)
             $0.leading.trailing.equalToSuperview()
             $0.bottom.equalToSuperview()
         }
@@ -153,12 +223,18 @@ extension DeliveryDetailsViewController {
         
         deliveryDetailsViewModel
             .configure(delivery: delivery)
-        
+//
         deliveryDetailsViewModel
             .outputs
             .packageId
             .drive(labelPlaceHolderIdAndPickUp.labelPlaceholder.rx.text)
             .disposed(by: disposeBag)
+//
+//        deliveryDetailsViewModel
+//            .outputs
+//            .pickUpTime
+//            .drive(labelPlaceHolderIdAndPickUp.labelDetails.rx.text)
+//            .disposed(by: disposeBag)
     
         deliveryDetailsViewModel
             .outputs
@@ -196,6 +272,12 @@ extension DeliveryDetailsViewController {
             .totalFee
             .drive(rowDeliveryTotal.labelDetails.rx.text)
             .disposed(by: disposeBag)
+        
+        deliveryDetailsViewModel
+            .outputs
+            .packageId
+            .drive(labelPlaceHolderDeliveryID.labelDetails.rx.text)
+            .disposed(by: disposeBag)
     
         deliveryDetailsViewModel
             .outputs
@@ -207,6 +289,12 @@ extension DeliveryDetailsViewController {
             .outputs
             .senderPhone
             .drive(labelPlaceHolderPhone.labelDetails.rx.text)
+            .disposed(by: disposeBag)
+        
+        deliveryDetailsViewModel
+            .outputs
+            .remarks
+            .drive(labelPlaceHolderRemarks.labelDetails.rx.text)
             .disposed(by: disposeBag)
         
         deliveryDetailsViewModel

@@ -26,6 +26,7 @@ protocol DeliveryDetailsViewModelOutputs {
     var senderEmail: Driver<String> { get }
     var totalFee: Driver<String> { get }
     var pickUpTime: Driver<String> { get }
+    var remarks: Driver<String> { get }
 }
 
 protocol DeliveryDetailsViewModelType {
@@ -58,6 +59,7 @@ final class DeliveryDetailsViewModel: DeliveryDetailsViewModelType, DeliveryDeta
     internal var senderPhone: Driver<String>
     internal var senderEmail: Driver<String>
     internal var pickUpTime: Driver<String>
+    internal var remarks: Driver<String>
     
     // MARK: - Attributes
     
@@ -85,7 +87,6 @@ final class DeliveryDetailsViewModel: DeliveryDetailsViewModelType, DeliveryDeta
             .compactMap { $0.surcharge }
             .asDriver(onErrorJustReturn: "")
         
-        // TOOD work this shit
         self.totalFee = configureProperty
             .filterNil()
             .compactMap {
@@ -100,7 +101,7 @@ final class DeliveryDetailsViewModel: DeliveryDetailsViewModelType, DeliveryDeta
     
         self.routeTo = configureProperty
             .filterNil()
-            .compactMap { $0.route?.start }
+            .compactMap { $0.route?.end }
             .asDriver(onErrorJustReturn: "")
         
         self.senderName = configureProperty
@@ -121,6 +122,11 @@ final class DeliveryDetailsViewModel: DeliveryDetailsViewModelType, DeliveryDeta
         self.pickUpTime = configureProperty
             .filterNil()
             .compactMap { $0.pickupTime?.toDateFormatted() }
+            .asDriver(onErrorJustReturn: "")
+        
+        self.remarks = configureProperty
+            .filterNil()
+            .compactMap { $0.remarks }
             .asDriver(onErrorJustReturn: "")
     }
 }
