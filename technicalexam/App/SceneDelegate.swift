@@ -17,17 +17,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
-                       let deliveryListingViewController = Assembler.shared
-                            .resolver
-                            .resolve(DeliveryListingViewController.self)!
-                 
-
-                        let navigation = UINavigationController(rootViewController: deliveryListingViewController)
-                        window.rootViewController = navigation
-
-                        self.window = window
-                        window.makeKeyAndVisible()
+            self.window = window
+            let sceneCoordinator = SceneCoordinator(window: self.window!)
+            sceneCoordinator.start()
         }
     }
 }
-

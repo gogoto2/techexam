@@ -5,9 +5,6 @@
 //  Created by iOS on 10/8/20.
 //  Copyright © 2020 iOS. All rights reserved.
 //
-
-import Foundation
-
 import Foundation
 import Swinject
 import RealmSwift
@@ -20,7 +17,7 @@ extension Assembler {
             RepositoryAssembly(),
             NetworkAssembly(),
             UseCaseAssembly(),
-            DeliveryListingAssembly()
+            FeatureAssembly()
         ], container: container)
         return assembler
     }()

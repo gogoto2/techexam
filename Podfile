@@ -10,6 +10,7 @@ target 'technicalexam' do
   pod 'RxDataSources'
   pod 'RxRealm'
   pod 'RxOptional'
+  pod 'RxKingfisher'
   
   # Offline Storage
   pod 'RealmSwift'

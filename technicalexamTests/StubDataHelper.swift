@@ -21,5 +21,3 @@ final class StubDataHelper {
         return Data()
     }
 }
-
-

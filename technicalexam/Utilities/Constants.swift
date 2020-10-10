@@ -13,3 +13,4 @@ let defaultPadding = 8
 
 // Screen width.
 public var screenWidth = UIScreen.main.bounds.width
+public var screenHeight = UIScreen.main.bounds.height

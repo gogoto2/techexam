@@ -29,6 +29,10 @@ PODS:
     - Differentiator (~> 4.0)
     - RxCocoa (~> 5.0)
     - RxSwift (~> 5.0)
+  - RxKingfisher (1.0.0):
+    - Kingfisher (~> 5)
+    - RxCocoa (~> 5)
+    - RxSwift (~> 5)
   - RxNimble (4.7.1):
     - RxNimble/RxBlocking (= 4.7.1)
   - RxNimble/Core (4.7.1):
@@ -65,6 +69,7 @@ DEPENDENCIES:
   - RealmSwift
   - RxBlocking
   - RxDataSources
+  - RxKingfisher
   - RxNimble
   - RxOptional
   - RxRealm
@@ -90,6 +95,7 @@ SPEC REPOS:
     - RxBlocking
     - RxCocoa
     - RxDataSources
+    - RxKingfisher
     - RxNimble
     - RxOptional
     - RxRealm
@@ -115,6 +121,7 @@ SPEC CHECKSUMS:
   RxBlocking: 5f700a78cad61ce253ebd37c9a39b5ccc76477b4
   RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
   RxDataSources: efee07fa4de48477eca0a4611e6d11e2da9c1114
+  RxKingfisher: 0f07678aca3e6a20143dfba67ec2d2c70d443a9a
   RxNimble: dca9840cfa96ce73847813432ddc6e84e1fcdd61
   RxOptional: b1fcd60856807a564c0215c2184b8d33e7826dc2
   RxRealm: 50e5fe5c1f22518205afbb313fbc5580d73bc586
@@ -126,6 +133,6 @@ SPEC CHECKSUMS:
   Swinject: ddf78b8486dd9b71a667b852cad919ab4484478e
   SwinjectAutoregistration: 330f5012642a8b5c89a8a4adb0c5e52df07382c0
 
-PODFILE CHECKSUM: 67ca6de9037c035b816375dd692d3b96f75c77c4
+PODFILE CHECKSUM: e58b3e1df1b023cc815578f80a298976d73a865e
 
 COCOAPODS: 1.9.3

@@ -22,8 +22,9 @@ final class RealmDelivery: Object {
     @objc dynamic var goodsPicture: String = ""
     @objc dynamic var deliveryFee: String = ""
     @objc dynamic var surcharge: String = ""
-    @objc dynamic var route: RealmRoute? = nil
-    @objc dynamic var sender: RealmSender? = nil
+    @objc dynamic var route: RealmRoute?
+    @objc dynamic var sender: RealmSender?
+    @objc dynamic var liked: Bool = false
 }
 
 extension RealmDelivery: DomainConvertibleType {
@@ -37,6 +38,10 @@ extension RealmDelivery: DomainConvertibleType {
                         route: route?.asDomain(),
                         sender: sender?.asDomain())
     }
+}
+
+extension RealmDelivery {
+   
 }
 
 extension Delivery: RealmRepresentable {
@@ -57,3 +62,4 @@ extension Delivery: RealmRepresentable {
         }
     }
 }
+

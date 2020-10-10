@@ -22,7 +22,9 @@ class SceneCoordinator: BaseCoordinator {
         let deliveryListingViewController = Assembler.shared
             .resolver
             .resolve(DeliveryListingViewController.self)!
-        window.rootViewController = deliveryListingViewController
+        
+        let navigation = UINavigationController(rootViewController: deliveryListingViewController)
+        window.rootViewController = navigation
         window.makeKeyAndVisible()
     }
 }

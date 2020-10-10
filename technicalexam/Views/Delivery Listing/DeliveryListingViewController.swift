@@ -11,6 +11,8 @@ import UIKit
 import RxSwift
 import RxDataSources
 
+// MARK: - Lifecycle
+
 class DeliveryListingViewController: UIViewController {
     
     private let deliveryListingViewModel: DeliveryListingViewModel
@@ -55,10 +57,6 @@ class DeliveryListingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpViews()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
         setUpBindings()
     }
 }
@@ -80,8 +78,18 @@ extension DeliveryListingViewController {
             .asObservable()
             .subscribe(onNext: {[weak self] _ in
                 self?.deliveryListingViewModel.nextPage()
-            })
-            .disposed(by: disposeBag)
+            }).disposed(by: disposeBag)
+        
+        collectionView.rx.modelSelected(Delivery.self)
+            .subscribe(onNext: {[weak self] delivery in
+                guard let navigationController = self?.navigationController else { return }
+                
+                let deliveryCoordinator = DeliveryDetailsCoordinator(
+                    navigationController: navigationController,
+                    delivery: delivery
+                )
+                deliveryCoordinator.start()
+            }).disposed(by: disposeBag)
     }
 }
 

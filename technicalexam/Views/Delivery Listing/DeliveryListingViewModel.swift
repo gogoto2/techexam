@@ -5,7 +5,6 @@
 //  Created by iOS on 10/8/20.
 //  Copyright © 2020 iOS. All rights reserved.
 //
-import UIKit
 import RxCocoa
 import RxSwift
 import RealmSwift
@@ -59,7 +58,7 @@ final class DeliveryListingViewModel: DeliveryListingViewModelType, DeliveryList
     // MARK: - Attributes
     
     private let disposeBag = DisposeBag()
-    private let limit = 25
+    private let limit = 10
     
     init(defaultFetchDeliveryPageUseCase: DefaultFetchDeliveryUseCase) {
         
