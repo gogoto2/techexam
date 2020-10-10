@@ -17,7 +17,7 @@ class DeliveryViewCell: BaseCollectionViewCell {
     
     // MARK: - Properties
     
-    static var identifier: String = "WishlistCollectionViewCell"
+    static var identifier: String = "DeliveryViewCell"
     
     var toggleWishList: ControlEvent<Void> {
         return imageViewHeart.rx.tap.asControlEvent()
@@ -55,7 +55,7 @@ class DeliveryViewCell: BaseCollectionViewCell {
     }
     
     internal let imageViewHeart = BounceButton(frame: .zero).with {
-        $0.setImage(#imageLiteral(resourceName: "icHeartGrayBg.png"), for: .normal)
+        $0.setImage(#imageLiteral(resourceName: "icHeartFilled.png"), for: .normal)
     }
     
     private lazy var viewBottomControl: UIView = UIView().with {
@@ -69,6 +69,7 @@ class DeliveryViewCell: BaseCollectionViewCell {
         labelTitle.text = viewModel.title
         labelLocation.text = viewModel.location
         labelPrice.text = viewModel.price
+        imageViewHeart.isHidden = !viewModel.favorite
         guard let url = URL(string: viewModel.image) else { return }
         imageViewItem.kf.setImage(with: url)
     }

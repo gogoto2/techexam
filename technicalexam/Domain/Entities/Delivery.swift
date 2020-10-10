@@ -8,6 +8,7 @@
 
 import Foundation
 import ObjectMapper
+import RealmSwift
 
 struct Delivery {
 	var id: String?
@@ -18,6 +19,11 @@ struct Delivery {
 	var surcharge: String?
 	var route: Route?
 	var sender: Sender?
+    
+    // Tempo fix for deliveries assoc. page,
+    // As part of the code convention, we are not supposed to edit pojo file
+    var favorite: Bool?
+    var page: LinkingObjects<RealmDeliveryPage>?
 }
 
 extension Delivery: Mappable {

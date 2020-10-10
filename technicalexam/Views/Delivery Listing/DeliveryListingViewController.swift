@@ -75,9 +75,10 @@ extension DeliveryListingViewController {
         
         deliveryListingViewModel.inputs.viewDidLoad()
   
-        deliveryListingViewModel.outputs.error.drive(onNext: { _ in
-            print("error asadasdsa")
-        })
+        deliveryListingViewModel.outputs.error
+            .drive(onNext: { _ in
+                print("error asadasdsa")
+            }).disposed(by: disposeBag)
         
         deliveryListingViewModel.outputs.deliveries
             .asDriver(onErrorJustReturn: [])

@@ -35,7 +35,7 @@ extension DeliveryPage: RealmRepresentable {
     func asRealm() -> RealmDeliveryPage {
         return RealmDeliveryPage.build { object in
             object.page = page
-            object.deliveries = deliveries.mapToList() ?? List<RealmDelivery>()
+            object.deliveries = deliveries.mapToList()
         }
     }
 }

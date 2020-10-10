@@ -182,7 +182,7 @@ extension DeliveryDetailsViewController {
         buttonFavorites.snp.makeConstraints { (make) in
             make.top.equalTo(scrollView).inset(-50)
             make.width.height.equalTo(100)
-            make.trailing.equalToSuperview().inset(20)
+            make.trailing.equalToSuperview().inset(defaultPadding * 2)
         }
         
         viewNavbar.addSubview(imageViewGoods)
@@ -234,6 +234,8 @@ extension DeliveryDetailsViewController {
                 guard let self = self else { return }
                 self.navigationController?.popViewController(animated: true)
             }).disposed(by: disposeBag)
+        
+        print("im on page \(delivery.page?.first?.page)")
         
         deliveryDetailsViewModel
             .configure(delivery: delivery)

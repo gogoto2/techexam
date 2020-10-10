@@ -11,12 +11,12 @@ import RealmSwift
 import Realm
 
 final class RealmDelivery: Object {
+    @objc dynamic var id: String = ""
     @objc dynamic var name: String = ""
     @objc dynamic var slug: String = ""
     @objc dynamic var statusOptionId: Int = 0
     @objc dynamic var createdAt: String = ""
     @objc dynamic var updatedAt: String = ""
-    @objc dynamic var id: String = ""
     @objc dynamic var remarks: String = ""
     @objc dynamic var pickupTime: String = ""
     @objc dynamic var goodsPicture: String = ""
@@ -24,7 +24,8 @@ final class RealmDelivery: Object {
     @objc dynamic var surcharge: String = ""
     @objc dynamic var route: RealmRoute?
     @objc dynamic var sender: RealmSender?
-    @objc dynamic var liked: Bool = false
+    @objc dynamic var favorite: Bool = false
+    var parentPage = LinkingObjects(fromType: RealmDeliveryPage.self, property: "deliveries")
 }
 
 extension RealmDelivery: DomainConvertibleType {
@@ -36,12 +37,10 @@ extension RealmDelivery: DomainConvertibleType {
                         deliveryFee: deliveryFee,
                         surcharge: surcharge,
                         route: route?.asDomain(),
-                        sender: sender?.asDomain())
+                        sender: sender?.asDomain(),
+                        favorite: favorite,
+                        page: parentPage)
     }
-}
-
-extension RealmDelivery {
-   
 }
 
 extension Delivery: RealmRepresentable {
@@ -59,7 +58,7 @@ extension Delivery: RealmRepresentable {
             object.surcharge = surcharge ?? ""
             object.route = route?.asRealm()
             object.sender = sender?.asRealm()
+            object.favorite = favorite ?? false
         }
     }
 }
-

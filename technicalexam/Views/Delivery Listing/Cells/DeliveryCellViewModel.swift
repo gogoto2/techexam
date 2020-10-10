@@ -31,6 +31,10 @@ struct DeliveryCellViewModel {
         return "Price: \(deliveryFee.addFormattedCurrency(with: deliverySurcharge, locale: Locale.current))"
     }
     
+    var favorite: Bool {
+        return delivery.favorite ?? false
+    }
+    
     var image: String {
         self.delivery.goodsPicture ?? ""
     }
