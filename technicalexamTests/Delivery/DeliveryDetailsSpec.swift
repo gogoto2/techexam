@@ -63,19 +63,6 @@ class DeliveryDetailsSpec: QuickSpec {
                 expect(pickUpTime)
                     .to(equal("Nov 22,2018 at 11:06 PM"))
             }
-            
-            it("can fetch by page") {
-                let page = DeliveryPage(deliveries: self.generateDeliveries(), page: 1)
-                let page2 = DeliveryPage(deliveries: self.generateDeliveries(), page: 2)
-                try! self.testRealm.write {
-                    self.testRealm.add(page.asRealm(), update: .all)
-                    self.testRealm.add(page2.asRealm(), update: .all)
-                }
-                let delivery = self.testRealm.objects(RealmDelivery.self).last
-                let parent = delivery?.parentPage
-                print("parent is \(parent)")
-//                realmPage1.
-            }
         }
     }
     

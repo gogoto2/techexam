@@ -39,7 +39,7 @@ final class RealmRepository<RealmObject: RealmRepresentable>: AbstractRepository
             .mapToDomain()
     }
     
-    func byPrimaryId(primaryKey: Int) -> Observable<RealmObject?> {
+    func byPrimaryId(primaryKey: String) -> Observable<RealmObject?> {
         let realm = self.realm
         guard let object = realm.object(ofType: RealmObject.RealmType.self, forPrimaryKey: primaryKey) else {
             return Observable.just(nil)

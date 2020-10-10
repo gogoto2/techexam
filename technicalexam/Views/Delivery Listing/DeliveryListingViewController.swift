@@ -77,7 +77,7 @@ extension DeliveryListingViewController {
   
         deliveryListingViewModel.outputs.error
             .drive(onNext: { _ in
-                print("error asadasdsa")
+                
             }).disposed(by: disposeBag)
         
         deliveryListingViewModel.outputs.deliveries
@@ -93,6 +93,9 @@ extension DeliveryListingViewController {
                 self?.deliveryListingViewModel.nextPage()
             }).disposed(by: disposeBag)
         
+//        collectionView.rx.setDelegate(self)
+//            .disposed(by: disposeBag)
+//
         collectionView.rx.modelSelected(Delivery.self)
             .subscribe(onNext: {[weak self] delivery in
                 guard let navigationController = self?.navigationController else { return }
@@ -123,3 +126,10 @@ extension DeliveryListingViewController {
         
     }
 }
+
+//extension DeliveryListingViewController: UICollectionViewDelegate {
+//    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+//        collectionView.dataSource.
+//        deliveryListingViewModel.outputs.deliveries.asObservable().s`
+//    }
+//}

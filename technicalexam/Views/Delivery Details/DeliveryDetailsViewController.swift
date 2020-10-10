@@ -235,8 +235,6 @@ extension DeliveryDetailsViewController {
                 self.navigationController?.popViewController(animated: true)
             }).disposed(by: disposeBag)
         
-        print("im on page \(delivery.page?.first?.page)")
-        
         deliveryDetailsViewModel
             .configure(delivery: delivery)
 
@@ -245,7 +243,14 @@ extension DeliveryDetailsViewController {
             .packageId
             .drive(labelPlaceHolderIdAndPickUp.labelPlaceholder.rx.text)
             .disposed(by: disposeBag)
-
+        
+        deliveryDetailsViewModel
+            .outputs
+            .favoriteButtonImage
+            .drive(onNext: {[weak self] image in
+                self?.buttonFavorites.setImage(image, for: .normal)
+            }).disposed(by: disposeBag)
+        
         deliveryDetailsViewModel
             .outputs
             .packagePhoto.drive(onNext: {[weak self] photo in

@@ -11,6 +11,7 @@ import RealmSwift
 import Realm
 
 final class RealmDelivery: Object {
+    @objc dynamic var uuid: String = ""
     @objc dynamic var id: String = ""
     @objc dynamic var name: String = ""
     @objc dynamic var slug: String = ""
@@ -26,6 +27,10 @@ final class RealmDelivery: Object {
     @objc dynamic var sender: RealmSender?
     @objc dynamic var favorite: Bool = false
     var parentPage = LinkingObjects(fromType: RealmDeliveryPage.self, property: "deliveries")
+    
+    override class func primaryKey() -> String? {
+        return "uuid"
+    }
 }
 
 extension RealmDelivery: DomainConvertibleType {
@@ -38,6 +43,7 @@ extension RealmDelivery: DomainConvertibleType {
                         surcharge: surcharge,
                         route: route?.asDomain(),
                         sender: sender?.asDomain(),
+                        uuid: uuid,
                         favorite: favorite,
                         page: parentPage)
     }
@@ -59,6 +65,7 @@ extension Delivery: RealmRepresentable {
             object.route = route?.asRealm()
             object.sender = sender?.asRealm()
             object.favorite = favorite ?? false
+            object.uuid = uuid ?? ""
         }
     }
 }

@@ -11,19 +11,28 @@ import RxSwift
 import RealmSwift
 import Moya
 
-protocol FavoriteUseCase {
-    func execute(requestValue: FavoriteUseCaseReqValue)
+protocol ToggleFavoriteUseCase {
+    func execute(requestValue: ToggleFavoriteUseCaseReqValue)
 }
 
-final class DefaultFavoriteUseCase: FavoriteUseCase {
-    private var deliveryRepository: RealmRepository<DeliveryPage>
+final class DefaultToggleFavoriteUseCase: ToggleFavoriteUseCase {
+    private var deliveryRepository: RealmRepository<Delivery>
     private var disposeBag = DisposeBag()
 
-    init(deliveryRepository: RealmRepository<DeliveryPage>) {
+    init(deliveryRepository: RealmRepository<Delivery>) {
         self.deliveryRepository = deliveryRepository
     }
 
-    func execute(requestValue: FavoriteUseCaseReqValue) {
+    func execute(requestValue: ToggleFavoriteUseCaseReqValue) {
+//        self.deliveryRepository.byPrimaryId(primaryKey: requestValue.deliveryUUID)
+//        self.deliveryRepository
+//            .byPrimaryId(primaryKey: requestValue.deliveryUUID)
+//            .map {
+//                var data = $0
+//                data.favorite = !$0.favorite
+//                return data
+//            }.asObservable()
+//        self.deliveryRepository.
 //        let
 //        Observable<[DeliveryPage]>.create { observer in
 //            let serviceDisposable = self.deliveryService.rx
@@ -51,7 +60,6 @@ final class DefaultFavoriteUseCase: FavoriteUseCase {
     }
 }
 
-struct FavoriteUseCaseReqValue {
-    let limit: Int
-    let fromPage: Int
+struct ToggleFavoriteUseCaseReqValue {
+    let deliveryUUID: String
 }

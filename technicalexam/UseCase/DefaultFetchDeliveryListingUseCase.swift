@@ -31,7 +31,14 @@ final class DefaultFetchDeliveryUseCase: FetchDeliveryUseCase {
                 .request(.getListing(page: requestValue.limit, offset: requestValue.offset))
                 .mapArray(Delivery.self)
                 .subscribe(onSuccess: { deliveries in
-                    let deliveryPage = DeliveryPage(deliveries: deliveries,
+                    
+                    var deliveriesCopy = deliveries
+                    for index in deliveriesCopy.indices {
+                        deliveriesCopy[index].uuid =
+                            "\(requestValue.offset)+\(deliveriesCopy[index].id ?? "")"
+                    }
+        
+                    let deliveryPage = DeliveryPage(deliveries: deliveriesCopy,
                                                     page: requestValue.offset)
                     self.deliveryRepository.save(entity: deliveryPage)
                 }, onError: { error in

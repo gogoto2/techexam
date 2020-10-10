@@ -27,6 +27,7 @@ protocol DeliveryDetailsViewModelOutputs {
     var totalFee: Driver<String> { get }
     var pickUpTime: Driver<String> { get }
     var remarks: Driver<String> { get }
+    var favoriteButtonImage: Driver<UIImage> { get }
 }
 
 protocol DeliveryDetailsViewModelType {
@@ -60,6 +61,7 @@ final class DeliveryDetailsViewModel: DeliveryDetailsViewModelType, DeliveryDeta
     internal var senderEmail: Driver<String>
     internal var pickUpTime: Driver<String>
     internal var remarks: Driver<String>
+    internal var favoriteButtonImage: Driver<UIImage>
     
     // MARK: - Attributes
     
@@ -76,6 +78,11 @@ final class DeliveryDetailsViewModel: DeliveryDetailsViewModelType, DeliveryDeta
             .filterNil()
             .compactMap { $0.goodsPicture }
             .asDriver(onErrorJustReturn: "")
+        
+        self.favoriteButtonImage = configureProperty
+            .filterNil()
+            .compactMap { $0.favorite ?? false ? #imageLiteral(resourceName: "icHeartFilled.png") : #imageLiteral(resourceName: "icHeart.png") }
+            .asDriver(onErrorJustReturn: #imageLiteral(resourceName: "icHeart.png"))
         
         self.deliveryFee = configureProperty
             .filterNil()

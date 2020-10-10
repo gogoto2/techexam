@@ -22,6 +22,7 @@ struct Delivery {
     
     // Tempo fix for deliveries assoc. page,
     // As part of the code convention, we are not supposed to edit pojo file
+    var uuid: String?
     var favorite: Bool?
     var page: LinkingObjects<RealmDeliveryPage>?
 }
