@@ -32,6 +32,7 @@ class DeliveryListingViewController: UIViewController {
     
     private lazy var layout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
+        layout.headerReferenceSize = CGSize.init(width: 10, height: defaultPadding)
         layout.itemSize = CGSize(width: (screenWidth - 48), height: 108)
         return layout
     }()
@@ -44,6 +45,11 @@ class DeliveryListingViewController: UIViewController {
         collectionView.contentInset = UIEdgeInsets.init(top: 20, left: 20, bottom: 20, right: 20)
         return collectionView
     }()
+    
+    private let viewNavbar = ViewNavbar().with {
+        $0.backButton.isHidden = true
+        $0.labeTitle.text = "Delivery"
+    }
     
     init(deliveryListingViewModel: DeliveryListingViewModel) {
         self.deliveryListingViewModel = deliveryListingViewModel
@@ -66,16 +72,22 @@ class DeliveryListingViewController: UIViewController {
 extension DeliveryListingViewController {
     
     private func setUpBindings() {
+        
         deliveryListingViewModel.inputs.viewDidLoad()
   
+        deliveryListingViewModel.outputs.error.drive(onNext: { _ in
+            print("error asadasdsa")
+        })
+        
         deliveryListingViewModel.outputs.deliveries
             .asDriver(onErrorJustReturn: [])
             .asObservable()
             .bind(to: collectionView.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
         
-        collectionView.rx.reachedBottom
+        collectionView.rx.reachedBottom(offset: 40)
             .asObservable()
+            .debounce(.seconds(1), scheduler: MainScheduler.instance)
             .subscribe(onNext: {[weak self] _ in
                 self?.deliveryListingViewModel.nextPage()
             }).disposed(by: disposeBag)
@@ -83,7 +95,6 @@ extension DeliveryListingViewController {
         collectionView.rx.modelSelected(Delivery.self)
             .subscribe(onNext: {[weak self] delivery in
                 guard let navigationController = self?.navigationController else { return }
-                
                 let deliveryCoordinator = DeliveryDetailsCoordinator(
                     navigationController: navigationController,
                     delivery: delivery
@@ -97,9 +108,17 @@ extension DeliveryListingViewController {
 
 extension DeliveryListingViewController {
     private func setUpViews() {
+        view.addSubview(viewNavbar)
+        viewNavbar.snp.makeConstraints {
+            $0.top.leading.trailing.equalToSuperview()
+            $0.height.equalTo(100)
+        }
+        
         view.addSubview(collectionView)
         collectionView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
+            $0.top.equalTo(viewNavbar.snp.bottom)
+            $0.leading.trailing.bottom.equalToSuperview()
         }
+        
     }
 }

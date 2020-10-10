@@ -129,14 +129,13 @@ class DeliveryDetailsViewController: UIViewController {
         self.delivery = delivery
         super.init(nibName: nil, bundle: nil)
     }
-  
-//    override func viewDidLayoutSubviews() {
-//        scrollView.addCornerRadius()
-//        super.viewDidLayoutSubviews()
-//    }
       
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    deinit {
+        print("deinitialized")
     }
 }
 
@@ -156,8 +155,6 @@ extension DeliveryDetailsViewController {
     private func setupViews() {
         
         view.backgroundColor = #colorLiteral(red: 0.9570000172, green: 0.2630000114, blue: 0.2119999975, alpha: 1)
-        
-        navigationController?.navigationBar.isHidden = true
 
         view.addSubview(viewNavbar)
         viewNavbar.snp.makeConstraints {
@@ -167,7 +164,7 @@ extension DeliveryDetailsViewController {
         
         view.addSubview(scrollView)
         scrollView.snp.makeConstraints { (make) in
-            make.top.equalTo(viewNavbar.snp.bottom).offset(defaultPadding)
+            make.top.equalTo(viewNavbar.snp.bottom)
             make.leading.trailing.bottom.equalTo(view)
         }
         
@@ -221,21 +218,21 @@ extension DeliveryDetailsViewController {
     
     private func bindViews() {
         
+        viewNavbar.backButton.rx.tap
+            .subscribe(onNext: {[weak self] _ in
+                guard let self = self else { return }
+                self.navigationController?.popViewController(animated: true)
+            }).disposed(by: disposeBag)
+        
         deliveryDetailsViewModel
             .configure(delivery: delivery)
-//
+
         deliveryDetailsViewModel
             .outputs
             .packageId
             .drive(labelPlaceHolderIdAndPickUp.labelPlaceholder.rx.text)
             .disposed(by: disposeBag)
-//
-//        deliveryDetailsViewModel
-//            .outputs
-//            .pickUpTime
-//            .drive(labelPlaceHolderIdAndPickUp.labelDetails.rx.text)
-//            .disposed(by: disposeBag)
-    
+
         deliveryDetailsViewModel
             .outputs
             .packagePhoto.drive(onNext: {[weak self] photo in

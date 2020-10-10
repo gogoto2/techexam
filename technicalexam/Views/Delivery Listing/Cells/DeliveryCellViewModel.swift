@@ -16,15 +16,19 @@ struct DeliveryCellViewModel {
     }
     
     var title: String {
-        self.delivery.id ?? ""
+        self.delivery.pickupTime?
+            .toDateFormatted() ?? ""
     }
     
-    var description: String {
-        self.delivery.remarks ?? ""
+    var location: String {
+        "From: \(self.delivery.route?.start ?? "")\nTo: \(self.delivery.route?.end ?? "")"
     }
     
     var price: String {
-        self.delivery.deliveryFee ?? "" + (self.delivery.surcharge ?? "")
+        guard let deliverySurcharge = self.delivery.surcharge,
+              let deliveryFee = self.delivery.deliveryFee
+        else { return "" }
+        return "Price: \(deliveryFee.addFormattedCurrency(with: deliverySurcharge, locale: Locale.current))"
     }
     
     var image: String {

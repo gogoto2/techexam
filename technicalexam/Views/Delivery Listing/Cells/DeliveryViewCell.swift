@@ -33,25 +33,25 @@ class DeliveryViewCell: BaseCollectionViewCell {
     
     private lazy var labelTitle = UILabel().with {
         $0.text = ""
-        $0.textColor = #colorLiteral(red: 0.2588235294, green: 0.09411764706, blue: 0.4117647059, alpha: 1)
+        $0.textColor = .black
+        $0.font = UIFont(name: fontRobotoRegular, size: 16)
         $0.numberOfLines = 2
     }
     
-    private lazy var labelSubtitle = UILabel().with {
-        $0.text = "3 colours"
-        $0.textColor = #colorLiteral(red: 0.5058823529, green: 0.5333333333, blue: 0.5490196078, alpha: 1)
-        $0.font = UIFont.systemFont(ofSize: 12)
+    private lazy var labelLocation = UILabel().with {
+        $0.font = UIFont(name: fontRobotoRegular, size: 14)
+        $0.numberOfLines = 0
+        $0.textColor = #colorLiteral(red: 0.5059999824, green: 0.5329999924, blue: 0.5490000248, alpha: 1)
+    }
+    
+    private lazy var labelPrice = UILabel().with {
+        $0.text = ""
+        $0.textColor = .black
+        $0.font = UIFont.systemFont(ofSize: 14)
     }
     
     private lazy var imageViewPoints = UIImageView().with {
         $0.contentMode = .scaleAspectFit
-    }
-    
-    private lazy var labelPrice = UILabel().with {
-        $0.text = "8888"
-        $0.textColor = #colorLiteral(red: 0.2588235294, green: 0.09411764706, blue: 0.4117647059, alpha: 1)
-        $0.font = UIFont.systemFont(ofSize: 16)
-        $0.numberOfLines = 2
     }
     
     internal let imageViewHeart = BounceButton(frame: .zero).with {
@@ -67,8 +67,8 @@ class DeliveryViewCell: BaseCollectionViewCell {
     
     internal func setupCell(_ viewModel: DeliveryCellViewModel) {
         labelTitle.text = viewModel.title
+        labelLocation.text = viewModel.location
         labelPrice.text = viewModel.price
-        labelSubtitle.text = viewModel.description
         guard let url = URL(string: viewModel.image) else { return }
         imageViewItem.kf.setImage(with: url)
     }
@@ -98,6 +98,13 @@ class DeliveryViewCell: BaseCollectionViewCell {
             $0.trailing.equalToSuperview().inset(defaultPadding)
         }
         
+        addSubview(labelLocation)
+        labelLocation.snp.makeConstraints {
+            $0.top.equalTo(labelTitle.snp.bottom).offset(defaultPadding)
+            $0.leading.equalTo(imageViewItem.snp.trailing).offset(defaultPadding)
+            $0.trailing.equalToSuperview().inset(defaultPadding)
+        }
+        
         addSubview(imageViewPoints)
         imageViewPoints.snp.makeConstraints {
             $0.leading.equalTo(imageViewItem.snp.trailing).offset(defaultPadding)
@@ -105,18 +112,11 @@ class DeliveryViewCell: BaseCollectionViewCell {
             $0.height.width.equalTo(1)
         }
         
-        addSubview(labelSubtitle)
-        labelSubtitle.snp.makeConstraints {
+        addSubview(labelPrice)
+        labelPrice.snp.makeConstraints {
             $0.bottom.equalTo(imageViewPoints.snp.top).offset(-12)
             $0.leading.equalTo(imageViewItem.snp.trailing).offset(defaultPadding)
             $0.trailing.equalToSuperview().inset(defaultPadding)
-        }
-        
-        addSubview(labelPrice)
-        labelPrice.snp.makeConstraints {
-            $0.top.equalTo(imageViewPoints)
-            $0.leading.equalTo(imageViewPoints.snp.trailing).offset(defaultPadding)
-            $0.trailing.equalToSuperview().inset(90)
         }
         
         addSubview(imageViewHeart)

@@ -23,8 +23,9 @@ class SceneCoordinator: BaseCoordinator {
             .resolver
             .resolve(DeliveryListingViewController.self)!
         
-        let navigation = UINavigationController(rootViewController: deliveryListingViewController)
-        window.rootViewController = navigation
+        let navigationController = UINavigationController(rootViewController: deliveryListingViewController)
+        navigationController.navigationBar.isHidden = true
+        window.rootViewController = navigationController
         window.makeKeyAndVisible()
     }
 }

@@ -105,7 +105,7 @@ final class DeliveryListingViewModel: DeliveryListingViewModelType, DeliveryList
             .asDriver(onErrorJustReturn: false)
         
         self.nextPageProperty
-            .withLatestFrom(isLoading)
+            .withLatestFrom(deliveryRequest.loading())
             .filter { !$0 }
             .withLatestFrom(currentPage)
             .filterNil()

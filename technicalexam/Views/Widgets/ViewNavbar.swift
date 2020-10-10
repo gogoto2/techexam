@@ -15,8 +15,14 @@ class ViewNavbar: UIView {
         $0.backgroundColor = #colorLiteral(red: 0.9570000172, green: 0.2630000114, blue: 0.2119999975, alpha: 1)
     }
     
-    private let buttonBack = BounceButton().with {
+    let backButton = BounceButton().with {
         $0.setImage(#imageLiteral(resourceName: "icBackArrow.png"), for: .normal)
+    }
+    
+    let labeTitle = UILabel().with {
+        $0.textAlignment = .center
+        $0.font = UIFont.init(name: fontRobotoBold, size: 20)
+        $0.textColor = .white
     }
 
     override init(frame: CGRect) {
@@ -39,8 +45,14 @@ extension ViewNavbar {
             $0.edges.equalToSuperview()
         }
         
-        addSubview(buttonBack)
-        buttonBack.snp.makeConstraints {
+        addSubview(labeTitle)
+        labeTitle.snp.makeConstraints {
+            $0.top.equalToSuperview().inset(16)
+            $0.leading.trailing.bottom.equalToSuperview()
+        }
+        
+        addSubview(backButton)
+        backButton.snp.makeConstraints {
             $0.centerY.equalToSuperview()
             $0.leading.equalToSuperview()
             $0.width.height.equalTo(40)
