@@ -110,6 +110,10 @@ class DeliveryDetailsViewController: UIViewController {
         $0.labelPlaceholder.text = "Pickup Time"
     }
     
+    private lazy var buttonFavorites = BounceButton().with {
+        $0.setImage(#imageLiteral(resourceName: "icHeart.png"), for: .normal)
+    }
+    
     private lazy var viewFeeDividerTop = SeparatorView()
     
     private lazy var viewFeeDividerBottom = SeparatorView()
@@ -172,6 +176,13 @@ extension DeliveryDetailsViewController {
         contentView.snp.makeConstraints { (make) in
             make.top.bottom.equalTo(scrollView)
             make.leading.trailing.equalTo(view).inset(defaultPadding * 2)
+        }
+        
+        view.addSubview(buttonFavorites)
+        buttonFavorites.snp.makeConstraints { (make) in
+            make.top.equalTo(scrollView).inset(-50)
+            make.width.height.equalTo(100)
+            make.trailing.equalToSuperview().inset(20)
         }
         
         viewNavbar.addSubview(imageViewGoods)

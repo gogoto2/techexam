@@ -43,7 +43,7 @@ class BounceButton: UIButton {
         isTouched = false
     }
     
-    var hitAreaExtensionSize: CGSize = CGSize(width: -50, height: -50)
+    var hitAreaExtensionSize: CGSize = CGSize(width: 0, height: 0)
     
     override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
           let extendedFrame: CGRect = bounds.insetBy(dx: hitAreaExtensionSize.width, dy: hitAreaExtensionSize.height)
