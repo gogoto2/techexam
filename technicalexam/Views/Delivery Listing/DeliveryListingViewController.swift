@@ -18,9 +18,9 @@ class DeliveryListingViewController: UIViewController {
     private let deliveryListingViewModel: DeliveryListingViewModel
     private let disposeBag = DisposeBag()
     
-    private lazy var dataSource: RxCollectionViewSectionedReloadDataSource<DeliveryListingSection> = {
-        let dataSource = RxCollectionViewSectionedReloadDataSource<DeliveryListingSection>(configureCell: {  _, collectionView, indexPath, item  in
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DeliveryViewCell.identifier, for: indexPath) as? DeliveryViewCell
+    private lazy var dataSource: RxTableViewSectionedReloadDataSource<DeliveryListingSection> = {
+        let dataSource = RxTableViewSectionedReloadDataSource<DeliveryListingSection>(configureCell: {  _, tableView, indexPath, item  in
+            let cell = tableView.dequeueReusableCell(withIdentifier: DeliveryTableViewCell.identifier, for: indexPath) as? DeliveryTableViewCell
             cell?.setupCell(DeliveryCellViewModel(delivery: item))
             cell?.toggleWishList.subscribe(onNext: { _ in
                
@@ -30,25 +30,29 @@ class DeliveryListingViewController: UIViewController {
         return dataSource
     }()
     
-    private lazy var layout: UICollectionViewFlowLayout = {
-        let layout = UICollectionViewFlowLayout()
-        layout.headerReferenceSize = CGSize.init(width: 10, height: defaultPadding)
-        layout.itemSize = CGSize(width: (screenWidth - 48), height: 108)
-        return layout
+    internal lazy var tableViewDeliveries: UITableView = {
+        let tableView = UITableView(frame: .zero, style: .plain)
+        tableView.register(DeliveryTableViewCell.self, forCellReuseIdentifier: DeliveryTableViewCell.identifier)
+        tableView.allowsSelection = true
+        tableView.showsVerticalScrollIndicator = false
+        tableView.separatorColor = .clear
+        tableView.backgroundColor = .clear
+        tableView.tableFooterView = loadingStateView
+        return tableView
     }()
     
-    private lazy var collectionView: UICollectionView = {
-        let collectionView = UICollectionView.init(frame: .zero, collectionViewLayout: layout)
-        collectionView.allowsSelection = true
-        collectionView.backgroundColor = #colorLiteral(red: 0.9294117647, green: 0.9333333333, blue: 0.937254902, alpha: 1)
-        collectionView.register(DeliveryViewCell.self, forCellWithReuseIdentifier: DeliveryViewCell.identifier)
-        collectionView.contentInset = UIEdgeInsets.init(top: 20, left: 20, bottom: 20, right: 20)
-        return collectionView
-    }()
+    private lazy var loadingStateView = UIActivityIndicatorView().with {
+        $0.frame = CGRect.init(x: 0, y: 20, width: screenWidth, height: 25)
+    }
     
     private let viewNavbar = ViewNavbar().with {
         $0.backButton.isHidden = true
         $0.labeTitle.text = "Delivery"
+    }
+    
+    private let viewState = ViewState().with {
+        $0.isHidden = true
+        $0.backgroundColor = #colorLiteral(red: 0.92900002, green: 0.9330000281, blue: 0.9369999766, alpha: 1)
     }
     
     init(deliveryListingViewModel: DeliveryListingViewModel) {
@@ -76,27 +80,24 @@ extension DeliveryListingViewController {
         deliveryListingViewModel.inputs.viewDidLoad()
   
         deliveryListingViewModel.outputs.error
-            .drive(onNext: { _ in
-                
+            .drive(onNext: {[weak self] _ in
+                self?.viewState.isHidden = false
             }).disposed(by: disposeBag)
         
         deliveryListingViewModel.outputs.deliveries
             .asDriver(onErrorJustReturn: [])
             .asObservable()
-            .bind(to: collectionView.rx.items(dataSource: dataSource))
+            .bind(to: tableViewDeliveries.rx.items(dataSource: dataSource))
             .disposed(by: disposeBag)
         
-        collectionView.rx.reachedBottom(offset: 40)
+        tableViewDeliveries.rx.reachedBottom(offset: 40)
             .asObservable()
             .debounce(.seconds(1), scheduler: MainScheduler.instance)
             .subscribe(onNext: {[weak self] _ in
                 self?.deliveryListingViewModel.nextPage()
             }).disposed(by: disposeBag)
         
-//        collectionView.rx.setDelegate(self)
-//            .disposed(by: disposeBag)
-//
-        collectionView.rx.modelSelected(Delivery.self)
+        tableViewDeliveries.rx.modelSelected(Delivery.self)
             .subscribe(onNext: {[weak self] delivery in
                 guard let navigationController = self?.navigationController else { return }
                 let deliveryCoordinator = DeliveryDetailsCoordinator(
@@ -105,6 +106,12 @@ extension DeliveryListingViewController {
                 )
                 deliveryCoordinator.start()
             }).disposed(by: disposeBag)
+        
+        viewState.button.rx.tap.subscribe(onNext: {[weak self] _ in
+                guard let self = self else { return }
+                self.viewState.isHidden = true
+                self.deliveryListingViewModel.refresh()
+            }).disposed(by: disposeBag)
     }
 }
 
@@ -112,24 +119,23 @@ extension DeliveryListingViewController {
 
 extension DeliveryListingViewController {
     private func setUpViews() {
+        view.backgroundColor = #colorLiteral(red: 0.92900002, green: 0.9330000281, blue: 0.9369999766, alpha: 1)
+        
         view.addSubview(viewNavbar)
         viewNavbar.snp.makeConstraints {
             $0.top.leading.trailing.equalToSuperview()
             $0.height.equalTo(100)
         }
         
-        view.addSubview(collectionView)
-        collectionView.snp.makeConstraints {
+        view.addSubview(tableViewDeliveries)
+        tableViewDeliveries.snp.makeConstraints {
             $0.top.equalTo(viewNavbar.snp.bottom)
             $0.leading.trailing.bottom.equalToSuperview()
         }
         
+        view.addSubview(viewState)
+        viewState.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
     }
 }
-
-//extension DeliveryListingViewController: UICollectionViewDelegate {
-//    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-//        collectionView.dataSource.
-//        deliveryListingViewModel.outputs.deliveries.asObservable().s`
-//    }
-//}

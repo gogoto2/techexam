@@ -23,6 +23,7 @@
 		6A393FBE2531DC7100C6A177 /* Double+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A393FBD2531DC7100C6A177 /* Double+Ext.swift */; };
 		6A393FC22531DCA100C6A177 /* NSDate+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A393FC12531DCA100C6A177 /* NSDate+Ext.swift */; };
 		6A393FC62531F54100C6A177 /* DefaultToggleFavoriteUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A393FC52531F54100C6A177 /* DefaultToggleFavoriteUseCase.swift */; };
+		6A393FD52532853300C6A177 /* ViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A393FD42532853300C6A177 /* ViewState.swift */; };
 		6A5B037925306A49009960C0 /* DeliveryDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A5B037825306A49009960C0 /* DeliveryDetailsViewController.swift */; };
 		6A5B03852530F111009960C0 /* DeliveryDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A5B03842530F111009960C0 /* DeliveryDetailsViewModel.swift */; };
 		6A5B03952530F76F009960C0 /* CurrencyHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A5B03942530F76F009960C0 /* CurrencyHelper.swift */; };
@@ -61,7 +62,7 @@
 		6AB2DDAD252F612500286EC0 /* StubDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB2DDAC252F612500286EC0 /* StubDataHelper.swift */; };
 		6AB2DDCB252F6B3800286EC0 /* delivery_json_success.json in Resources */ = {isa = PBXBuildFile; fileRef = 6AB2DDCA252F6B3800286EC0 /* delivery_json_success.json */; };
 		6ADB02BE25303849006DAF8E /* DeliveryListingSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ADB02BD25303849006DAF8E /* DeliveryListingSection.swift */; };
-		6ADB02C625303913006DAF8E /* DeliveryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ADB02C525303913006DAF8E /* DeliveryViewCell.swift */; };
+		6ADB02C625303913006DAF8E /* DeliveryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ADB02C525303913006DAF8E /* DeliveryTableViewCell.swift */; };
 		6ADB02CA25303955006DAF8E /* With.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ADB02C925303955006DAF8E /* With.swift */; };
 		6ADB02CF25303A26006DAF8E /* BounceButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ADB02CE25303A26006DAF8E /* BounceButton.swift */; };
 		6ADB02D525303A70006DAF8E /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ADB02D425303A70006DAF8E /* UIView+Ext.swift */; };
@@ -107,6 +108,7 @@
 		6A393FBD2531DC7100C6A177 /* Double+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Ext.swift"; sourceTree = "<group>"; };
 		6A393FC12531DCA100C6A177 /* NSDate+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSDate+Ext.swift"; sourceTree = "<group>"; };
 		6A393FC52531F54100C6A177 /* DefaultToggleFavoriteUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultToggleFavoriteUseCase.swift; sourceTree = "<group>"; };
+		6A393FD42532853300C6A177 /* ViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewState.swift; sourceTree = "<group>"; };
 		6A5B037825306A49009960C0 /* DeliveryDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryDetailsViewController.swift; sourceTree = "<group>"; };
 		6A5B03842530F111009960C0 /* DeliveryDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryDetailsViewModel.swift; sourceTree = "<group>"; };
 		6A5B03942530F76F009960C0 /* CurrencyHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyHelper.swift; sourceTree = "<group>"; };
@@ -145,7 +147,7 @@
 		6AB2DDAC252F612500286EC0 /* StubDataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubDataHelper.swift; sourceTree = "<group>"; };
 		6AB2DDCA252F6B3800286EC0 /* delivery_json_success.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = delivery_json_success.json; sourceTree = "<group>"; };
 		6ADB02BD25303849006DAF8E /* DeliveryListingSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryListingSection.swift; sourceTree = "<group>"; };
-		6ADB02C525303913006DAF8E /* DeliveryViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryViewCell.swift; sourceTree = "<group>"; };
+		6ADB02C525303913006DAF8E /* DeliveryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryTableViewCell.swift; sourceTree = "<group>"; };
 		6ADB02C925303955006DAF8E /* With.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = With.swift; sourceTree = "<group>"; };
 		6ADB02CE25303A26006DAF8E /* BounceButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BounceButton.swift; sourceTree = "<group>"; };
 		6ADB02D425303A70006DAF8E /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
@@ -241,6 +243,7 @@
 		6A2A63F2252F140900091A13 /* Delivery Listing */ = {
 			isa = PBXGroup;
 			children = (
+				6A393FD32532851B00C6A177 /* Widgets */,
 				6ADB02BC2530383D006DAF8E /* Cells */,
 				6A6CB9A8252F145900A52337 /* DeliveryListingViewController.swift */,
 				6AA01E35252F302C007997E6 /* DeliveryListingViewModel.swift */,
@@ -255,6 +258,14 @@
 				6A393FAD25313CEA00C6A177 /* Roboto-Regular.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		6A393FD32532851B00C6A177 /* Widgets */ = {
+			isa = PBXGroup;
+			children = (
+				6A393FD42532853300C6A177 /* ViewState.swift */,
+			);
+			path = Widgets;
 			sourceTree = "<group>";
 		};
 		6A5B0376253069BC009960C0 /* Delivery Details */ = {
@@ -438,7 +449,7 @@
 			isa = PBXGroup;
 			children = (
 				6ADB02BD25303849006DAF8E /* DeliveryListingSection.swift */,
-				6ADB02C525303913006DAF8E /* DeliveryViewCell.swift */,
+				6ADB02C525303913006DAF8E /* DeliveryTableViewCell.swift */,
 				6ADB02E22530421A006DAF8E /* DeliveryCellViewModel.swift */,
 				6ADB02EC25304717006DAF8E /* DeliveryViewCellHeaderViewCell.swift */,
 			);
@@ -719,7 +730,7 @@
 				6A6CB9AE252F147100A52337 /* Coordinator.swift in Sources */,
 				6AB2DD46252F4A9C00286EC0 /* Array+Ext.swift in Sources */,
 				6AA01DEE252F22DE007997E6 /* EnvironmentVariables.swift in Sources */,
-				6ADB02C625303913006DAF8E /* DeliveryViewCell.swift in Sources */,
+				6ADB02C625303913006DAF8E /* DeliveryTableViewCell.swift in Sources */,
 				6AA01DC1252F1F6F007997E6 /* SceneCoordinator.swift in Sources */,
 				6A5B037925306A49009960C0 /* DeliveryDetailsViewController.swift in Sources */,
 				6AA01DBA252F1EC1007997E6 /* DomainConvertable.swift in Sources */,
@@ -729,6 +740,7 @@
 				6AA01E36252F302C007997E6 /* DeliveryListingViewModel.swift in Sources */,
 				6AA01E81252F3B53007997E6 /* ObseravableType+ObjectMapper.swift in Sources */,
 				6ADB02F325305644006DAF8E /* UIScrollView+Ext.swift in Sources */,
+				6A393FD52532853300C6A177 /* ViewState.swift in Sources */,
 				6AA01E2E252F2AF9007997E6 /* Object+Ext.swift in Sources */,
 				6AA01DB0252F1CD9007997E6 /* Observable+Ext.swift in Sources */,
 				6A393FA12531335100C6A177 /* RowView.swift in Sources */,
