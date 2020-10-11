@@ -59,6 +59,7 @@ final class DeliveryListingViewModel: DeliveryListingViewModelType, DeliveryList
     
     private let disposeBag = DisposeBag()
     private let limit = 10
+    private let offsetLimit = 5
     
     init(defaultFetchDeliveryPageUseCase: DefaultFetchDeliveryUseCase) {
         
@@ -66,6 +67,9 @@ final class DeliveryListingViewModel: DeliveryListingViewModelType, DeliveryList
     
         let deliveryRequest = currentPage
             .filterNil()
+            .filter {[weak self] page in
+                page <= self?.offsetLimit ?? 0
+            }
             .flatMapLatest {[weak self] page -> Observable<LoadingResult<[DeliveryPage]>> in
                 let requestValue = FetchDeliveryUseCaseReqValue(limit: self?.limit ?? 0, offset: page)
                 return defaultFetchDeliveryPageUseCase.execute(requestValue: requestValue)
