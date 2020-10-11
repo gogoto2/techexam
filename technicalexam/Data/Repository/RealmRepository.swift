@@ -66,6 +66,13 @@ final class RealmRepository<RealmObject: RealmRepresentable>: AbstractRepository
             .subscribe(realm.rx.add(update: .modified))
             .disposed(by: disposeBag)
     }
+    
+    func update(attributes: [String: Any], update: Realm.UpdatePolicy) {
+        let realm = self.realm
+        safeWrite {
+            realm.create(RealmObject.RealmType.self, value: attributes, update: update)
+        }
+    }
 
     func delete(entity: RealmObject) {
         Observable.from(object: entity.asRealm())
@@ -81,6 +88,15 @@ final class RealmRepository<RealmObject: RealmRepresentable>: AbstractRepository
             realm.delete(entity)
         }
     }
+    
+    func delete(primaryKey: String) {
+        safeWrite {
+            let obj = realm.object(ofType: RealmObject.RealmType.self, forPrimaryKey: primaryKey)
+            guard let object = obj else { return }
+            realm.delete(object)
+        }
+    }
+    
     
     func deleteAll() {
         let realm = self.realm

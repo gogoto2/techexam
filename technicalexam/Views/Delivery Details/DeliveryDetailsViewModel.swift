@@ -93,7 +93,7 @@ final class DeliveryDetailsViewModel: DeliveryDetailsViewModelType, DeliveryDeta
             
         self.configureProperty
             .filterNil()
-            .compactMap { $0.favorite ?? false ? #imageLiteral(resourceName: "icHeartFilled.png") : #imageLiteral(resourceName: "icHeart.png") }
+            .compactMap { $0.favorite?.first?.isFavorite ?? false ? #imageLiteral(resourceName: "icHeartFilled.png") : #imageLiteral(resourceName: "icHeart.png") }
             .bind(to: favoriteImage)
             .disposed(by: disposeBag)
     

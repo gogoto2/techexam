@@ -26,5 +26,8 @@ class RepositoryAssembly: Assembly {
         
         container.autoregister(RealmRepository<Delivery>.self,
                                initializer: RealmRepository<Delivery>.init)
+        
+        container.autoregister(RealmRepository<Favorite>.self,
+                               initializer: RealmRepository<Favorite>.init)
     }
 }

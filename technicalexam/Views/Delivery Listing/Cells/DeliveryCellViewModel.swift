@@ -32,7 +32,8 @@ struct DeliveryCellViewModel {
     }
     
     var favorite: Bool {
-        return delivery.favorite ?? false
+        return delivery.favorite?.first?.isFavorite ?? false
+        print("is favorite na? \(delivery.favorite?.first?.isFavorite)")
     }
     
     var image: String {

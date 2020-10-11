@@ -96,6 +96,8 @@ class DeliveryTableViewCell: BaseTableViewCell {
         imageViewHeart.isHidden = !viewModel.favorite
         guard let url = URL(string: viewModel.image) else { return }
         imageViewItem.kf.setImage(with: url)
+        print("uhhhhhmmm \(viewModel.favorite)")
+        
     }
     
     // MARK: - Overrides

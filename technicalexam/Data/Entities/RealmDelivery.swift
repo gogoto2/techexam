@@ -25,8 +25,8 @@ final class RealmDelivery: Object {
     @objc dynamic var surcharge: String = ""
     @objc dynamic var route: RealmRoute?
     @objc dynamic var sender: RealmSender?
-    @objc dynamic var favorite: Bool = false
     var parentPage = LinkingObjects(fromType: RealmDeliveryPage.self, property: "deliveries")
+    var favorite = LinkingObjects(fromType: RealmFavorite.self, property: "deliveries")
     
     override class func primaryKey() -> String? {
         return "uuid"
@@ -44,8 +44,8 @@ extension RealmDelivery: DomainConvertibleType {
                         route: route?.asDomain(),
                         sender: sender?.asDomain(),
                         uuid: uuid,
-                        favorite: favorite,
-                        page: parentPage)
+                        page: parentPage,
+                        favorite: favorite)
     }
 }
 
@@ -64,7 +64,6 @@ extension Delivery: RealmRepresentable {
             object.surcharge = surcharge ?? ""
             object.route = route?.asRealm()
             object.sender = sender?.asRealm()
-            object.favorite = favorite ?? false
             object.uuid = uuid ?? ""
         }
     }

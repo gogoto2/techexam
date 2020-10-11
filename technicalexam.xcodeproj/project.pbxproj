@@ -24,6 +24,8 @@
 		6A393FC22531DCA100C6A177 /* NSDate+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A393FC12531DCA100C6A177 /* NSDate+Ext.swift */; };
 		6A393FC62531F54100C6A177 /* DefaultToggleFavoriteUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A393FC52531F54100C6A177 /* DefaultToggleFavoriteUseCase.swift */; };
 		6A393FD52532853300C6A177 /* ViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A393FD42532853300C6A177 /* ViewState.swift */; };
+		6A393FDB2532B24100C6A177 /* RealmFavorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A393FDA2532B24100C6A177 /* RealmFavorite.swift */; };
+		6A393FE12532BECD00C6A177 /* Favorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A393FE02532BECD00C6A177 /* Favorite.swift */; };
 		6A5B037925306A49009960C0 /* DeliveryDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A5B037825306A49009960C0 /* DeliveryDetailsViewController.swift */; };
 		6A5B03852530F111009960C0 /* DeliveryDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A5B03842530F111009960C0 /* DeliveryDetailsViewModel.swift */; };
 		6A5B03952530F76F009960C0 /* CurrencyHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A5B03942530F76F009960C0 /* CurrencyHelper.swift */; };
@@ -109,6 +111,8 @@
 		6A393FC12531DCA100C6A177 /* NSDate+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSDate+Ext.swift"; sourceTree = "<group>"; };
 		6A393FC52531F54100C6A177 /* DefaultToggleFavoriteUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultToggleFavoriteUseCase.swift; sourceTree = "<group>"; };
 		6A393FD42532853300C6A177 /* ViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewState.swift; sourceTree = "<group>"; };
+		6A393FDA2532B24100C6A177 /* RealmFavorite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmFavorite.swift; sourceTree = "<group>"; };
+		6A393FE02532BECD00C6A177 /* Favorite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favorite.swift; sourceTree = "<group>"; };
 		6A5B037825306A49009960C0 /* DeliveryDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryDetailsViewController.swift; sourceTree = "<group>"; };
 		6A5B03842530F111009960C0 /* DeliveryDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryDetailsViewModel.swift; sourceTree = "<group>"; };
 		6A5B03942530F76F009960C0 /* CurrencyHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyHelper.swift; sourceTree = "<group>"; };
@@ -329,6 +333,7 @@
 				6AA01E58252F360F007997E6 /* RealmDeliveryPage.swift */,
 				6AA01E31252F2C66007997E6 /* RealmRoute.swift */,
 				6AA01E29252F2A3C007997E6 /* RealmSender.swift */,
+				6A393FDA2532B24100C6A177 /* RealmFavorite.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -414,6 +419,7 @@
 				6AA01E05252F2826007997E6 /* Route.swift */,
 				6AA01E06252F2826007997E6 /* Sender.swift */,
 				6AA01EB8252F3CEB007997E6 /* DeliveryPage.swift */,
+				6A393FE02532BECD00C6A177 /* Favorite.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -704,6 +710,7 @@
 				6A2A63D1252F137200091A13 /* AppDelegate.swift in Sources */,
 				6AA01E3B252F3248007997E6 /* DefaultFetchDeliveryListingUseCase.swift in Sources */,
 				6AA01DD0252F2034007997E6 /* NetworkAssembly.swift in Sources */,
+				6A393FDB2532B24100C6A177 /* RealmFavorite.swift in Sources */,
 				6AA01DF2252F2461007997E6 /* BaseService.swift in Sources */,
 				6A393FC22531DCA100C6A177 /* NSDate+Ext.swift in Sources */,
 				6A393FB825314FE800C6A177 /* ViewNavbar.swift in Sources */,
@@ -722,6 +729,7 @@
 				6ADB02E32530421A006DAF8E /* DeliveryCellViewModel.swift in Sources */,
 				6AA01E08252F2826007997E6 /* Route.swift in Sources */,
 				6A393F7D2531231500C6A177 /* DateTimeHelper.swift in Sources */,
+				6A393FE12532BECD00C6A177 /* Favorite.swift in Sources */,
 				6ADB02CF25303A26006DAF8E /* BounceButton.swift in Sources */,
 				6AA01E26252F2938007997E6 /* RealmDelivery.swift in Sources */,
 				6A5B03852530F111009960C0 /* DeliveryDetailsViewModel.swift in Sources */,

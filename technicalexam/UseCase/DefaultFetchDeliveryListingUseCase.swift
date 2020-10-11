@@ -30,14 +30,9 @@ final class DefaultFetchDeliveryUseCase: FetchDeliveryUseCase {
             let serviceDisposable = self.deliveryService.rx
                 .request(.getListing(page: requestValue.limit, offset: requestValue.offset))
                 .mapArray(Delivery.self)
-                .subscribe(onSuccess: { deliveries in
-                    
-                    var deliveriesCopy = deliveries
-                    for index in deliveriesCopy.indices {
-                        deliveriesCopy[index].uuid =
-                            "\(requestValue.offset)+\(deliveriesCopy[index].id ?? "")"
-                    }
-        
+                .subscribe(onSuccess: {[weak self] deliveries in
+                    guard let self = self else { return }
+                    let deliveriesCopy = self.addGeneratedId(to: deliveries, with: requestValue.offset)
                     let deliveryPage = DeliveryPage(deliveries: deliveriesCopy,
                                                     page: requestValue.offset)
                     self.deliveryRepository.save(entity: deliveryPage)
@@ -58,8 +53,13 @@ final class DefaultFetchDeliveryUseCase: FetchDeliveryUseCase {
         }
     }
     
-    private func listenToLocalChanges(observer: AnyObserver<[DeliveryPage]>) {
-       
+    private func addGeneratedId(to deliveries: [Delivery], with page: Int) -> [Delivery] {
+        var deliveriesCopy = deliveries
+        for index in deliveriesCopy.indices {
+            deliveriesCopy[index].uuid =
+                "\(page)+\(deliveriesCopy[index].id ?? "")"
+        }
+        return deliveriesCopy
     }
 }
 

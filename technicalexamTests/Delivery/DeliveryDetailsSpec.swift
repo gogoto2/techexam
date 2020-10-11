@@ -65,33 +65,4 @@ class DeliveryDetailsSpec: QuickSpec {
             }
         }
     }
-    
-    private func generateDeliveries() -> [Delivery] {
-        let sender = Sender(phone: "9999999",
-                            name: "mark",
-                            email: "mark@gmail.com")
-        
-        let route = Route(start: "Metro Manila",
-                               end: "Legazpi City")
-        
-        let delivery = Delivery(id: "#000000",
-                                remarks: "a remrk",
-                                pickupTime: "2018-11-22T07:06:05-08:00",
-                                goodsPicture: "https://loremflickr.com/320/240/cat?lock=28542",
-                                deliveryFee: "$1",
-                                surcharge: "$20",
-                                route: route,
-                                sender: sender)
-        
-        let delivery2 = Delivery(id: "#000000",
-                                remarks: "a remrk",
-                                pickupTime: "2018-11-22T07:06:05-08:00",
-                                goodsPicture: "https://loremflickr.com/320/240/cat?lock=28542",
-                                deliveryFee: "$1",
-                                surcharge: "$20",
-                                route: route,
-                                sender: sender)
-        
-        return [delivery, delivery2]
-    }
 }
