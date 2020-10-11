@@ -53,7 +53,7 @@ final class RealmRepository<RealmObject: RealmRepresentable>: AbstractRepository
         return Observable.array(from: objects)
                                  .mapToDomain()
     }
-
+    
     func save(entity: RealmObject) {
         Observable.from(object: entity.asRealm())
             .subscribe(realm.rx.add(update: .modified))

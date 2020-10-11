@@ -21,6 +21,10 @@ class RepositoryAssembly: Assembly {
             try! Realm(configuration: resolver.resolve(Realm.Configuration.self)!)
         }
         
-        container.autoregister(RealmRepository<DeliveryPage>.self, initializer: RealmRepository<DeliveryPage>.init)
+        container.autoregister(RealmRepository<DeliveryPage>.self,
+                               initializer: RealmRepository<DeliveryPage>.init)
+        
+        container.autoregister(RealmRepository<Delivery>.self,
+                               initializer: RealmRepository<Delivery>.init)
     }
 }

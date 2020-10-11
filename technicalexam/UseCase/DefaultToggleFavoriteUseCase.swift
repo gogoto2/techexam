@@ -12,7 +12,7 @@ import RealmSwift
 import Moya
 
 protocol ToggleFavoriteUseCase {
-    func execute(requestValue: ToggleFavoriteUseCaseReqValue)
+    func execute(requestValue: ToggleFavoriteUseCaseReqValue) -> Observable<Bool>
 }
 
 final class DefaultToggleFavoriteUseCase: ToggleFavoriteUseCase {
@@ -23,40 +23,16 @@ final class DefaultToggleFavoriteUseCase: ToggleFavoriteUseCase {
         self.deliveryRepository = deliveryRepository
     }
 
-    func execute(requestValue: ToggleFavoriteUseCaseReqValue) {
-//        self.deliveryRepository.byPrimaryId(primaryKey: requestValue.deliveryUUID)
-//        self.deliveryRepository
-//            .byPrimaryId(primaryKey: requestValue.deliveryUUID)
-//            .map {
-//                var data = $0
-//                data.favorite = !$0.favorite
-//                return data
-//            }.asObservable()
-//        self.deliveryRepository.
-//        let
-//        Observable<[DeliveryPage]>.create { observer in
-//            let serviceDisposable = self.deliveryService.rx
-//                .request(.getListing(page: requestValue.limit, offset: requestValue.offset))
-//                .mapArray(Delivery.self)
-//                .subscribe(onSuccess: { deliveries in
-//                    let deliveryPage = DeliveryPage(deliveries: deliveries,
-//                                                    page: requestValue.offset)
-//                    self.deliveryRepository.save(entity: deliveryPage)
-//                }, onError: { error in
-//                    observer.onError(error)
-//                })
-//
-//            let query = NSPredicate(format: "page <= %i", requestValue.offset)
-//            let repoDisposable = self.deliveryRepository.query(with: query)
-//                .subscribe(onNext: { wallet in
-//                    observer.onNext(wallet)
-//                })
-//
-//            return Disposables.create {
-//                serviceDisposable.dispose()
-//                repoDisposable.dispose()
-//            }
-//        }
+    func execute(requestValue: ToggleFavoriteUseCaseReqValue) -> Observable<Bool> {
+        return self.deliveryRepository.byPrimaryId(primaryKey: requestValue.deliveryUUID)
+            .filterNil()
+            .flatMapLatest { delivery -> Observable<Bool> in
+                guard let favorite = delivery.favorite else { return Observable.just(false) }
+                var delivery = delivery
+                delivery.favorite = !favorite
+                self.deliveryRepository.save(entity: delivery)
+                return Observable.just(!favorite)
+            }
     }
 }
 

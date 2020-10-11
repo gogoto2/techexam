@@ -229,6 +229,10 @@ extension DeliveryDetailsViewController {
     
     private func bindViews() {
         
+        buttonFavorites.rx.tap.subscribe(onNext: {[weak self] _ in
+                self?.deliveryDetailsViewModel.inputs.toggleFavorites()
+            }).disposed(by: disposeBag)
+        
         viewNavbar.backButton.rx.tap
             .subscribe(onNext: {[weak self] _ in
                 guard let self = self else { return }

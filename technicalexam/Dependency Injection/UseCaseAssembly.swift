@@ -13,5 +13,7 @@ class UseCaseAssembly: Assembly {
     func assemble(container: Container) {
         container.autoregister(DefaultFetchDeliveryUseCase.self,
                                initializer: DefaultFetchDeliveryUseCase.init)
+        container.autoregister(DefaultToggleFavoriteUseCase.self,
+                               initializer: DefaultToggleFavoriteUseCase.init)
     }
 }
