@@ -13,11 +13,35 @@ import Kingfisher
 import RxSwift
 import RxCocoa
 
-class DeliveryViewCell: BaseCollectionViewCell {
+class BaseTableViewCell: UITableViewCell {
+    // MARK: - Data Properties
+    var defaultSelectionStyle: UITableViewCell.SelectionStyle = .none
+    
+    // MARK: - Functions
+    
+    func setupViews() {
+        
+    }
+    
+    // MARK: - Overrides
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        self.selectionStyle = defaultSelectionStyle
+        setupViews()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+
+class DeliveryTableViewCell: BaseTableViewCell {
     
     // MARK: - Properties
     
-    static var identifier: String = "DeliveryViewCell"
+    static var identifier: String = "DeliveryTableViewCell"
     
     var toggleWishList: ControlEvent<Void> {
         return imageViewHeart.rx.tap.asControlEvent()
@@ -58,9 +82,9 @@ class DeliveryViewCell: BaseCollectionViewCell {
         $0.setImage(#imageLiteral(resourceName: "icHeartFilled.png"), for: .normal)
     }
     
-    private lazy var viewBottomControl: UIView = UIView().with {
+    private lazy var container: UIView = UIView().with {
         $0.backgroundColor = UIColor.white
-        $0.addCornerRadius(24)
+        $0.addCornerRadius(16.0)
     }
     
     // MARK: - Functions
@@ -81,46 +105,52 @@ class DeliveryViewCell: BaseCollectionViewCell {
     }
     
     override func setupViews() {
-        self.backgroundColor = UIColor.white
-        self.addCornerRadius(16.0)
-        self.addShadow()
         
-        addSubview(imageViewItem)
+        backgroundColor = #colorLiteral(red: 0.92900002, green: 0.9330000281, blue: 0.9369999766, alpha: 1)
+        
+        addSubview(container)
+        container.snp.makeConstraints {
+            $0.leading.trailing.equalToSuperview().inset(defaultPadding)
+            $0.top.bottom.equalToSuperview().inset(defaultPadding/2)
+        }
+        
+        container.addSubview(imageViewItem)
         imageViewItem.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(defaultPadding)
+            $0.top.bottom.equalToSuperview().offset(defaultPadding).inset(defaultPadding)
             $0.leading.equalToSuperview().inset(defaultPadding)
             $0.height.width.equalTo(92.0)
         }
         
-        addSubview(labelTitle)
+        container.addSubview(labelTitle)
         labelTitle.snp.makeConstraints {
             $0.top.equalTo(imageViewItem)
             $0.leading.equalTo(imageViewItem.snp.trailing).offset(defaultPadding)
             $0.trailing.equalToSuperview().inset(defaultPadding)
         }
         
-        addSubview(labelLocation)
+        container.addSubview(labelLocation)
         labelLocation.snp.makeConstraints {
             $0.top.equalTo(labelTitle.snp.bottom).offset(defaultPadding)
             $0.leading.equalTo(imageViewItem.snp.trailing).offset(defaultPadding)
             $0.trailing.equalToSuperview().inset(defaultPadding)
         }
         
-        addSubview(imageViewPoints)
+        container.addSubview(imageViewPoints)
         imageViewPoints.snp.makeConstraints {
             $0.leading.equalTo(imageViewItem.snp.trailing).offset(defaultPadding)
             $0.bottom.equalToSuperview().inset(defaultPadding)
             $0.height.width.equalTo(1)
         }
         
-        addSubview(labelPrice)
+        container.addSubview(labelPrice)
         labelPrice.snp.makeConstraints {
-            $0.bottom.equalTo(imageViewPoints.snp.top).offset(-12)
+            $0.top.equalTo(labelLocation.snp.bottom).offset(defaultPadding)
+            $0.bottom.equalToSuperview().inset(defaultPadding)
             $0.leading.equalTo(imageViewItem.snp.trailing).offset(defaultPadding)
             $0.trailing.equalToSuperview().inset(defaultPadding)
         }
         
-        addSubview(imageViewHeart)
+        container.addSubview(imageViewHeart)
         imageViewHeart.snp.makeConstraints {
             $0.bottom.trailing.equalToSuperview().inset(defaultPadding)
             $0.height.width.equalTo(32)
