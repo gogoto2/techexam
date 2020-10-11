@@ -36,12 +36,13 @@ final class DefaultToggleFavoriteUseCase: ToggleFavoriteUseCase {
                         let favorites = Favorite.init(uuid: delivery.uuid ?? "", isFavorite: true, deliveries: [delivery])
                         self.favoriteRepository.save(entity: favorites)
                         observer.onNext(true)
+                    } else {
+                        let isFavorite = delivery.favorite?.first?.isFavorite ?? false
+                        let favorites = Favorite.init(uuid: delivery.uuid ?? "", isFavorite: !isFavorite, deliveries: [delivery])
+                        self.favoriteRepository.save(entity: favorites)
+                        observer.onNext(!isFavorite)
                     }
-                    
-                    let isFavorite = delivery.favorite?.first?.isFavorite ?? false
-                    let favorites = Favorite.init(uuid: delivery.uuid ?? "", isFavorite: !isFavorite, deliveries: [delivery])
-                    self.favoriteRepository.save(entity: favorites)
-                    observer.onNext(!isFavorite)
+                    observer.onCompleted()
                 })
 
              return Disposables.create {
