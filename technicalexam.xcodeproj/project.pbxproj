@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3C405C385D3B837E89603555 /* Pods_technicalexam.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 314E8105F6E226634AC974CF /* Pods_technicalexam.framework */; };
+		0D787505E2B637ABE99D42B4 /* Pods_technicalexam.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3D8276CA10E3732EC0546EE /* Pods_technicalexam.framework */; };
 		6A2A63D1252F137200091A13 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2A63D0252F137200091A13 /* AppDelegate.swift */; };
 		6A2A63D3252F137200091A13 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2A63D2252F137200091A13 /* SceneDelegate.swift */; };
 		6A2A63D7252F137900091A13 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6A2A63D6252F137900091A13 /* Assets.xcassets */; };
@@ -73,7 +73,7 @@
 		6ADB02ED25304717006DAF8E /* DeliveryViewCellHeaderViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ADB02EC25304717006DAF8E /* DeliveryViewCellHeaderViewCell.swift */; };
 		6ADB02F325305644006DAF8E /* UIScrollView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ADB02F225305644006DAF8E /* UIScrollView+Ext.swift */; };
 		6AEEDABF253114B6002DBEB5 /* DeliveryDetailsSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AEEDABE253114B6002DBEB5 /* DeliveryDetailsSpec.swift */; };
-		C986C98B390BEB0D63834E3B /* Pods_technicalexamTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6514F2AD444BD1A42C073EF /* Pods_technicalexamTests.framework */; };
+		89C907F47FA36665DB882668 /* Pods_technicalexamTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BD42B932CF8F44D781596D3 /* Pods_technicalexamTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,9 +87,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2E337A0F9BA209192A07E779 /* Pods-technicalexamTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-technicalexamTests.release.xcconfig"; path = "Target Support Files/Pods-technicalexamTests/Pods-technicalexamTests.release.xcconfig"; sourceTree = "<group>"; };
-		314E8105F6E226634AC974CF /* Pods_technicalexam.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_technicalexam.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		3E7F1E4A2DF7B7846A4CE7BD /* Pods-technicalexam.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-technicalexam.debug.xcconfig"; path = "Target Support Files/Pods-technicalexam/Pods-technicalexam.debug.xcconfig"; sourceTree = "<group>"; };
+		2F80C6DB2FEA215019588BA7 /* Pods-technicalexamTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-technicalexamTests.debug.xcconfig"; path = "Target Support Files/Pods-technicalexamTests/Pods-technicalexamTests.debug.xcconfig"; sourceTree = "<group>"; };
+		4BD42B932CF8F44D781596D3 /* Pods_technicalexamTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_technicalexamTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5D015AD6CAD429D3C2080A4B /* Pods-technicalexam.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-technicalexam.release.xcconfig"; path = "Target Support Files/Pods-technicalexam/Pods-technicalexam.release.xcconfig"; sourceTree = "<group>"; };
 		6A2A63CD252F137200091A13 /* technicalexam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = technicalexam.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A2A63D0252F137200091A13 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6A2A63D2252F137200091A13 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -159,9 +159,9 @@
 		6ADB02EC25304717006DAF8E /* DeliveryViewCellHeaderViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryViewCellHeaderViewCell.swift; sourceTree = "<group>"; };
 		6ADB02F225305644006DAF8E /* UIScrollView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Ext.swift"; sourceTree = "<group>"; };
 		6AEEDABE253114B6002DBEB5 /* DeliveryDetailsSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryDetailsSpec.swift; sourceTree = "<group>"; };
-		B6705559261065656B69D626 /* Pods-technicalexamTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-technicalexamTests.debug.xcconfig"; path = "Target Support Files/Pods-technicalexamTests/Pods-technicalexamTests.debug.xcconfig"; sourceTree = "<group>"; };
-		EA46EDB5D5F465F29249F2D9 /* Pods-technicalexam.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-technicalexam.release.xcconfig"; path = "Target Support Files/Pods-technicalexam/Pods-technicalexam.release.xcconfig"; sourceTree = "<group>"; };
-		F6514F2AD444BD1A42C073EF /* Pods_technicalexamTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_technicalexamTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A3D8276CA10E3732EC0546EE /* Pods_technicalexam.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_technicalexam.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EAC439539F6C128F6F218086 /* Pods-technicalexamTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-technicalexamTests.release.xcconfig"; path = "Target Support Files/Pods-technicalexamTests/Pods-technicalexamTests.release.xcconfig"; sourceTree = "<group>"; };
+		FD10652B0B2111AE48F0591C /* Pods-technicalexam.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-technicalexam.debug.xcconfig"; path = "Target Support Files/Pods-technicalexam/Pods-technicalexam.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,7 +169,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3C405C385D3B837E89603555 /* Pods_technicalexam.framework in Frameworks */,
+				0D787505E2B637ABE99D42B4 /* Pods_technicalexam.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -177,7 +177,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C986C98B390BEB0D63834E3B /* Pods_technicalexamTests.framework in Frameworks */,
+				89C907F47FA36665DB882668 /* Pods_technicalexamTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -191,7 +191,7 @@
 				6A2A63E6252F137900091A13 /* technicalexamTests */,
 				6A2A63CE252F137200091A13 /* Products */,
 				C4B1CB2DE4CC653D2EF210DF /* Pods */,
-				AB862B8FDD79E9961F33DE7D /* Frameworks */,
+				8CB5150596609E0B1A610EC2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -469,11 +469,11 @@
 			path = Widgets;
 			sourceTree = "<group>";
 		};
-		AB862B8FDD79E9961F33DE7D /* Frameworks */ = {
+		8CB5150596609E0B1A610EC2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				314E8105F6E226634AC974CF /* Pods_technicalexam.framework */,
-				F6514F2AD444BD1A42C073EF /* Pods_technicalexamTests.framework */,
+				A3D8276CA10E3732EC0546EE /* Pods_technicalexam.framework */,
+				4BD42B932CF8F44D781596D3 /* Pods_technicalexamTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -481,10 +481,10 @@
 		C4B1CB2DE4CC653D2EF210DF /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				3E7F1E4A2DF7B7846A4CE7BD /* Pods-technicalexam.debug.xcconfig */,
-				EA46EDB5D5F465F29249F2D9 /* Pods-technicalexam.release.xcconfig */,
-				B6705559261065656B69D626 /* Pods-technicalexamTests.debug.xcconfig */,
-				2E337A0F9BA209192A07E779 /* Pods-technicalexamTests.release.xcconfig */,
+				FD10652B0B2111AE48F0591C /* Pods-technicalexam.debug.xcconfig */,
+				5D015AD6CAD429D3C2080A4B /* Pods-technicalexam.release.xcconfig */,
+				2F80C6DB2FEA215019588BA7 /* Pods-technicalexamTests.debug.xcconfig */,
+				EAC439539F6C128F6F218086 /* Pods-technicalexamTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -496,12 +496,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6A2A63EC252F137900091A13 /* Build configuration list for PBXNativeTarget "technicalexam" */;
 			buildPhases = (
-				2F5CF3A9D243013DAA3AE0BF /* [CP] Check Pods Manifest.lock */,
+				25C2E81C46AE3171DDAD6C9E /* [CP] Check Pods Manifest.lock */,
 				6A2A63C9252F137200091A13 /* Sources */,
 				6A2A63CA252F137200091A13 /* Frameworks */,
 				6A2A63CB252F137200091A13 /* Resources */,
 				6A460A202530191A002A8349 /* ShellScript */,
-				8BEDBFB76213A779951BED94 /* [CP] Embed Pods Frameworks */,
+				76750A0C1F41635003969AA0 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -516,11 +516,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6A2A63EF252F137900091A13 /* Build configuration list for PBXNativeTarget "technicalexamTests" */;
 			buildPhases = (
-				D207DBD71405828151165C12 /* [CP] Check Pods Manifest.lock */,
+				650BCD24649563426BD1BE71 /* [CP] Check Pods Manifest.lock */,
 				6A2A63DF252F137900091A13 /* Sources */,
 				6A2A63E0252F137900091A13 /* Frameworks */,
 				6A2A63E1252F137900091A13 /* Resources */,
-				9C692347B4D81C6667C3D268 /* [CP] Embed Pods Frameworks */,
+				19EB902860D36B29C4880BA4 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -594,7 +594,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		2F5CF3A9D243013DAA3AE0BF /* [CP] Check Pods Manifest.lock */ = {
+		19EB902860D36B29C4880BA4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-technicalexamTests/Pods-technicalexamTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-technicalexamTests/Pods-technicalexamTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-technicalexamTests/Pods-technicalexamTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		25C2E81C46AE3171DDAD6C9E /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -610,6 +627,28 @@
 			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-technicalexam-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		650BCD24649563426BD1BE71 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-technicalexamTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -633,7 +672,7 @@
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
 		};
-		8BEDBFB76213A779951BED94 /* [CP] Embed Pods Frameworks */ = {
+		76750A0C1F41635003969AA0 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -648,45 +687,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-technicalexam/Pods-technicalexam-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		9C692347B4D81C6667C3D268 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-technicalexamTests/Pods-technicalexamTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-technicalexamTests/Pods-technicalexamTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-technicalexamTests/Pods-technicalexamTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D207DBD71405828151165C12 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-technicalexamTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -903,7 +903,7 @@
 		};
 		6A2A63ED252F137900091A13 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3E7F1E4A2DF7B7846A4CE7BD /* Pods-technicalexam.debug.xcconfig */;
+			baseConfigurationReference = FD10652B0B2111AE48F0591C /* Pods-technicalexam.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -926,7 +926,7 @@
 		};
 		6A2A63EE252F137900091A13 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EA46EDB5D5F465F29249F2D9 /* Pods-technicalexam.release.xcconfig */;
+			baseConfigurationReference = 5D015AD6CAD429D3C2080A4B /* Pods-technicalexam.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -949,7 +949,7 @@
 		};
 		6A2A63F0252F137900091A13 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B6705559261065656B69D626 /* Pods-technicalexamTests.debug.xcconfig */;
+			baseConfigurationReference = 2F80C6DB2FEA215019588BA7 /* Pods-technicalexamTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -971,7 +971,7 @@
 		};
 		6A2A63F1252F137900091A13 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2E337A0F9BA209192A07E779 /* Pods-technicalexamTests.release.xcconfig */;
+			baseConfigurationReference = EAC439539F6C128F6F218086 /* Pods-technicalexamTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
