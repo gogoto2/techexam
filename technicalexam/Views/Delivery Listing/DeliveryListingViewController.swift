@@ -92,7 +92,6 @@ extension DeliveryListingViewController {
         
         tableViewDeliveries.rx.reachedBottom(offset: 40)
             .asObservable()
-            .debounce(.seconds(1), scheduler: MainScheduler.instance)
             .subscribe(onNext: {[weak self] _ in
                 self?.deliveryListingViewModel.nextPage()
             }).disposed(by: disposeBag)
