@@ -53,7 +53,7 @@ public extension PrimitiveSequence where Trait == SingleTrait, Element == Respon
 
 
 // MARK: - ImmutableMappable
-public extension PrimitiveSequence where TraitType == SingleTrait, Element == Response {
+public extension PrimitiveSequence where Trait == SingleTrait, Element == Response {
 
     /// Maps data received from the signal into an object
     /// which implements the ImmutableMappable protocol and returns the result back

@@ -97,7 +97,6 @@ final class RealmRepository<RealmObject: RealmRepresentable>: AbstractRepository
         }
     }
     
-    
     func deleteAll() {
         let realm = self.realm
         let objects = realm.objects(RealmObject.RealmType.self)

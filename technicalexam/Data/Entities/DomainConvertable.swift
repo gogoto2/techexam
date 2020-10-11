@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import Foundation
+
 protocol DomainConvertibleType {
     associatedtype DomainType
 

@@ -14,7 +14,6 @@ struct Route {
 	var end: String?
 }
 
-
 extension Route: Mappable {
     init?(map: Map) {
     }

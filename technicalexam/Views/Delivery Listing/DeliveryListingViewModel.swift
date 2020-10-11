@@ -109,7 +109,6 @@ final class DeliveryListingViewModel: DeliveryListingViewModelType, DeliveryList
             .asDriver(onErrorJustReturn: false)
         
         self.nextPageProperty
-//            .debounce(.milliseconds(500), scheduler: MainScheduler.instance)
             .withLatestFrom(deliveryRequest.loading())
             .filter { !$0 }
             .withLatestFrom(currentPage)
