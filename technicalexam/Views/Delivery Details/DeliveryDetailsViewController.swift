@@ -252,7 +252,8 @@ extension DeliveryDetailsViewController {
             .outputs
             .favoriteButtonImage
             .drive(onNext: {[weak self] image in
-                self?.buttonFavorites.setImage(image, for: .normal)
+                let uiImage = UIImage(named: image)
+                self?.buttonFavorites.setImage(uiImage, for: .normal)
             }).disposed(by: disposeBag)
         
         deliveryDetailsViewModel

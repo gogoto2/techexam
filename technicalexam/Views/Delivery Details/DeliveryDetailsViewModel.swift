@@ -28,7 +28,7 @@ protocol DeliveryDetailsViewModelOutputs {
     var totalFee: Driver<String> { get }
     var pickUpTime: Driver<String> { get }
     var remarks: Driver<String> { get }
-    var favoriteButtonImage: Driver<UIImage> { get }
+    var favoriteButtonImage: Driver<String> { get }
 }
 
 protocol DeliveryDetailsViewModelType {
@@ -67,7 +67,7 @@ final class DeliveryDetailsViewModel: DeliveryDetailsViewModelType, DeliveryDeta
     internal var senderEmail: Driver<String>
     internal var pickUpTime: Driver<String>
     internal var remarks: Driver<String>
-    internal var favoriteButtonImage: Driver<UIImage>
+    internal var favoriteButtonImage: Driver<String>
     
     // MARK: - Attributes
     
@@ -86,24 +86,24 @@ final class DeliveryDetailsViewModel: DeliveryDetailsViewModelType, DeliveryDeta
             .compactMap { $0.goodsPicture }
             .asDriver(onErrorJustReturn: "")
         
-        let favoriteImage = BehaviorRelay<UIImage>(value: #imageLiteral(resourceName: "icHeart.png"))
+        let favoriteImage = BehaviorRelay<String>(value: "icHeart")
         
         self.favoriteButtonImage = favoriteImage
-            .asDriver(onErrorJustReturn: #imageLiteral(resourceName: "icHeart.png"))
+            .asDriver(onErrorJustReturn: "icHeart")
             
         self.configureProperty
             .filterNil()
-            .compactMap { $0.favorite?.first?.isFavorite ?? false ? #imageLiteral(resourceName: "icHeartFilled.png") : #imageLiteral(resourceName: "icHeart.png") }
+            .compactMap { $0.favorite?.first?.isFavorite ?? false ? "icHeartFilled" : "icHeart" }
             .bind(to: favoriteImage)
             .disposed(by: disposeBag)
     
         self.toggleProperty
             .withLatestFrom(configureProperty)
-            .filterNil()
+             .filterNil()
             .flatMapLatest { delivery -> Observable<Bool> in
-                let requestVale = ToggleFavoriteUseCaseReqValue.init(deliveryUUID: delivery.uuid ?? "")
+                let requestVale = ToggleFavoriteUseCaseReqValue(deliveryUUID: delivery.uuid ?? "")
                 return defaultToggleFavoritesUseCase.execute(requestValue: requestVale)
-            }.compactMap { $0 ? #imageLiteral(resourceName: "icHeartFilled.png") : #imageLiteral(resourceName: "icHeart.png") }
+            }.compactMap { $0 ? "icHeartFilled" : "icHeart" }
             .bind(to: favoriteImage)
             .disposed(by: disposeBag)
     

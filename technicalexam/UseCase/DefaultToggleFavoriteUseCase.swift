@@ -26,23 +26,28 @@ final class DefaultToggleFavoriteUseCase: ToggleFavoriteUseCase {
     }
 
     func execute(requestValue: ToggleFavoriteUseCaseReqValue) -> Observable<Bool> {
-        return self.deliveryRepository.byPrimaryId(primaryKey: requestValue.deliveryUUID)
-            .filterNil()
-            .flatMapLatest {[weak self] delivery -> Observable<Bool> in
-                guard let self = self else { return Observable.just(false) }
-                
-                if delivery.favorite?.first?.isFavorite == nil {
-                    let favorites = Favorite.init(uuid: delivery.uuid ?? "", isFavorite: true, deliveries: [delivery])
+        Observable<Bool>.create { [weak self] observer in
+            let repo = self?.deliveryRepository.byPrimaryId(primaryKey: requestValue.deliveryUUID)
+                .filterNil()
+                .subscribe(onNext: {[weak self] delivery in
+                    guard let self = self else { return }
+                    
+                    if delivery.favorite?.first?.isFavorite == nil {
+                        let favorites = Favorite.init(uuid: delivery.uuid ?? "", isFavorite: true, deliveries: [delivery])
+                        self.favoriteRepository.save(entity: favorites)
+                        observer.onNext(true)
+                    }
+                    
+                    let isFavorite = delivery.favorite?.first?.isFavorite ?? false
+                    let favorites = Favorite.init(uuid: delivery.uuid ?? "", isFavorite: !isFavorite, deliveries: [delivery])
                     self.favoriteRepository.save(entity: favorites)
-                    return Observable.just(true)
-                }
-                
-                let isFavorite = delivery.favorite?.first?.isFavorite ?? false
-                let favorites = Favorite.init(uuid: delivery.uuid ?? "", isFavorite: !isFavorite, deliveries: [delivery])
-                self.favoriteRepository.save(entity: favorites)
-                return Observable.just(!isFavorite)
-            }
-        
+                    observer.onNext(!isFavorite)
+                })
+
+             return Disposables.create {
+                repo?.dispose()
+             }
+        }
     }
 }
 
