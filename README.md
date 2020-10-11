@@ -4,8 +4,12 @@
 2. Limits 5 page request api request with 10 items each
 3. BDD Testing
 4. MVVM-C Architecture
-5. All views are created programatically
-6. Use case methodology
+5. Coding Conventions with SwiftLint
+5. All views are created programatically 
+8. Clean Architecture 
+    Dependecy Injection Using Swinject
+    Use case methodology
+    DTO
 
 # Note
 If you are using xcode 12.0 or higher, and encountering error during app installation on simulator,please refer to this
